@@ -1,20 +1,21 @@
-name: Deploy Astro to GitHub Pages
+name: Github Pages Astro CI
 
-    on:
-     # Trigger the workflow every time you push to the `main` branch
-      push:
-        branches: [ master ]
-      # Allows you to run this workflow manually from the Actions tab on GitHub.
-      workflow_dispatch:
+on:
+  # Trigger the workflow every time you push to the `github-pages-example ` branch
+  # Using a different branch name? Replace `github-pages-example ` with your branch’s name
+  push:
+    branches: [github-pages-example]
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
 
-      # Allow this job to clone the repo and create a page deployment
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-    jobs:
-      build:
+jobs:
+    build:
         runs-on: ubuntu-latest
         steps:
         - name: Check out your repository using git
@@ -39,7 +40,7 @@ name: Deploy Astro to GitHub Pages
           with:
             path: ./dist
 
-      deploy:
+    deploy:
         environment:
           name: github-pages
           url: ${{ steps.deployment.outputs.page_url }}
