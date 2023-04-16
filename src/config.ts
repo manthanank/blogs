@@ -20,37 +20,37 @@ export const LOGO_IMAGE = {
 export const SOCIALS: SocialObjects = [
   {
     name: "Github",
-    href: "",
+    href: "https://github.com/manthanank",
     linkTitle: ` ${SITE.title} on Github`,
     active: true,
   },
   {
     name: "Facebook",
-    href: "",
+    href: "https://www.facebook.com/manthanank/",
     linkTitle: `${SITE.title} on Facebook`,
     active: true,
   },
   {
     name: "Instagram",
-    href: "",
+    href: "https://www.instagram.com/manthan_ank/",
     linkTitle: `${SITE.title} on Instagram`,
     active: true,
   },
   {
     name: "LinkedIn",
-    href: "",
+    href: "https://www.linkedin.com/in/manthanank",
     linkTitle: `${SITE.title} on LinkedIn`,
     active: true,
   },
   {
     name: "Mail",
-    href: "mailto:yourmail@gmail.com",
+    href: "mailto:manthan.ank46@gmail.com",
     linkTitle: `Send an email to ${SITE.title}`,
     active: false,
   },
   {
     name: "Twitter",
-    href: "",
+    href: "https://twitter.com/manthan_ank",
     linkTitle: `${SITE.title} on Twitter`,
     active: false,
   },
@@ -62,7 +62,7 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "YouTube",
-    href: "",
+    href: "https://www.youtube.com/@manthanank",
     linkTitle: `${SITE.title} on YouTube`,
     active: false,
   },
@@ -80,7 +80,7 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "Pinterest",
-    href: "",
+    href: "https://in.pinterest.com/manthanank/",
     linkTitle: `${SITE.title} on Pinterest`,
     active: false,
   },
