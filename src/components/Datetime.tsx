@@ -29,15 +29,14 @@ const FormattedDatetime = ({ datetime }: { datetime: string | Date }) => {
   const myDatetime = new Date(datetime);
 
   const date = myDatetime.toLocaleDateString([], {
-    day: "2-digit",
-    month: "2-digit",
     year: "numeric",
-  }).replace(/\//g, '.');
+    month: "long",
+    day: "numeric",
+  });
 
   const time = myDatetime.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
-    hour12: false,
   });
 
   return (
