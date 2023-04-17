@@ -17,7 +17,7 @@ description:
 
 A collective list of free APIs
 
-![image-preview](/assets/images/img1.png)
+![image-preview](/blogs/assets/images/img1.png)
 
 Preview - [Link](https://github.com/public-apis/public-apis)
 
@@ -25,7 +25,7 @@ Preview - [Link](https://github.com/public-apis/public-apis)
 
 A collective list of free APIs for use in software and web development 🚀 (Clone of [https://github.com/public-apis/public-apis](https://github.com/public-apis/public-apis))
 
-![image-preview](/assets/images/img2.png)
+![image-preview](/blogs/assets/images/img2.png)
 
 Preview - [Link](https://github.com/public-api-lists/public-api-lists)
 
@@ -33,7 +33,7 @@ Preview - [Link](https://github.com/public-api-lists/public-api-lists)
 
 🌐 Wikipedia for Web APIs. Directory of REST API definitions in OpenAPI 2.0/3.x format
 
-![image-preview](/assets/images/img3.png)
+![image-preview](/blogs/assets/images/img3.png)
 
 Preview - [Link](https://github.com/apis-guru/openapi-directory)
 
@@ -41,7 +41,7 @@ Preview - [Link](https://github.com/apis-guru/openapi-directory)
 
 Microsoft REST API Guidelines
 
-![image-preview](/assets/images/img4.png)
+![image-preview](/blogs/assets/images/img4.png)
 
 Preview - [Link](https://github.com/microsoft/api-guidelines)
 
@@ -49,7 +49,7 @@ Preview - [Link](https://github.com/microsoft/api-guidelines)
 
 📚 A public list of APIs from round the web.
 
-![image-preview](/assets/images/img5.png)
+![image-preview](/blogs/assets/images/img5.png)
 
 Preview - [Link](https://github.com/n0shake/public-apis)
 
@@ -57,7 +57,7 @@ Preview - [Link](https://github.com/n0shake/public-apis)
 
 A collective list of free APIs for use in software development
 
-![image-preview](/assets/images/img6.png)
+![image-preview](/blogs/assets/images/img6.png)
 
 Preview - [Link](https://github.com/VNAPNIC/public-apis)
 
@@ -65,7 +65,7 @@ Preview - [Link](https://github.com/VNAPNIC/public-apis)
 
 Public interface definitions of Google APIs.
 
-![image-preview](/assets/images/img7.png)
+![image-preview](/blogs/assets/images/img7.png)
 
 Preview - [Link](https://github.com/googleapis/googleapis)
 
@@ -73,6 +73,6 @@ Preview - [Link](https://github.com/googleapis/googleapis)
 
 📜 A collective list of public GraphQL APIs
 
-![image-preview](/assets/images/img8.png)
+![image-preview](/blogs/assets/images/img8.png)
 
 Preview - [Link](https://github.com/IvanGoncharov/graphql-apis)
