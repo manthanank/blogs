@@ -8,9 +8,9 @@ Hey, I'm Manthan Ankolekar, This is my blog site..
 This theme is aimed to be accessible out of the box. Light and dark mode are supported by
 default and additional color schemes can also be configured.
 
-<div>
+<!-- <div>
   <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+</div> -->
 
 ## Tech Stack
 

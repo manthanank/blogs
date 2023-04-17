@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "dev": "astro check --watch & astro dev",
-    "start": "astro dev",
+    "start": "astro dev -- --open /blogs",
     "build": "astro build && jampack ./dist",
     "preview": "astro preview",
     "sync": "astro sync",
