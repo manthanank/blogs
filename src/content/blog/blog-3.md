@@ -2,7 +2,7 @@
 author: Manthan Ankolekar
 pubDatetime: 2023-04-23T05:52:02.680Z
 title: Add package manager to Angular app
-slug: add-package-manager-angular-app
+postSlug: add-package-manager-angular-app
 featured: true
 draft: false
 tags:

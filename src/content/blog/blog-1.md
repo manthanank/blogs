@@ -2,7 +2,7 @@
 author: Manthan Ank
 pubDatetime: 2023-04-19T02:44:00Z
 title: List of GitHub Repositories with public API's
-slug: list-of-gitHub-repositories-with-public-apis
+postSlug: list-of-gitHub-repositories-with-public-apis
 featured: true
 draft: false
 tags:

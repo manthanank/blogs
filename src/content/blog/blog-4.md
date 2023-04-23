@@ -2,7 +2,7 @@
 author: Manthan Ankolekar
 pubDatetime: 2023-04-23T05:52:02.680Z
 title: Command to generate new new app in current app
-slug: command-generate-app-current-app
+postSlug: command-generate-app-current-app
 featured: true
 draft: false
 tags:
