@@ -92,8 +92,8 @@ sessionStorage.clear();
 
 ### Difference between Cookies vs Local Storage vs Sesssion Storage
 
-| | Cookies | Local Storage| Session Storage |
-|--|--|--|--|
+|  | Cookies | Local Storage| Session Storage |
+|---|---|---|---|
 | Stoage Capacity | 4kb | 10mb | 5mb |
 | Browser Support | HTML4/HTML5 | HTML5 | HTML5 |
 | Accessibility | Any Browser Window | Any Browser Window | Same Browser Tab |
