@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2023-04-28T08:44:00Z
+pubDatetime: 2023-04-29T08:44:00Z
 title: HTTP Status Codes
 postSlug: http-status-codes
 featured: true
