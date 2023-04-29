@@ -96,7 +96,7 @@ sessionStorage.clear();
 |---|---|---|---|
 | Stoage Capacity | 4kb | 10mb | 5mb |
 | Browser Support | HTML4 / HTML5 | HTML5 | HTML5 |
-| Accessibility | Any Browser Window | Any Browser Window | Same Browser Tab |
+| Accessible In | Any Browser Window | Any Browser Window | Same Browser Tab |
 | Expiry | Can set Manually | Never | On Browser Tab Closes |
 | Stored In | Browser & Server | Browser Only | Browser Only |
 | Sent with requests | Yes | No | No |
