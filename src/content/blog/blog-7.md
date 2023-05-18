@@ -12,7 +12,7 @@ description:
   Router Debugging in angular application.
 ---
 
-## Router Debugging in angular application
+## Steps of Router Debugging in angular application
 
 1. Enable router tracing: In `app.module.ts`
 
