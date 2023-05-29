@@ -87,4 +87,4 @@ Let's consider an example where you have a project named "my-project" and you wa
     git reset --hard          # Discard all local changes and reset to last commit
     ```
 
-These commands should give you a good starting point for using Git in your project. Remember to replace <file>, <branch>, <repository-url>, and <new-branch> with the appropriate values specific to your project.
+These commands should give you a good starting point for using Git in your project. Remember to replace `<file>`, `<branch>`, `<repository-url>`, and `<new-branch>` with the appropriate values specific to your project.
