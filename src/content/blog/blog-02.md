@@ -18,7 +18,7 @@ description: Build cache setup in angular app..
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
     "newProjectRoot": "projects",
-    "projects" 
+    "projects"
     {
         ...
     },

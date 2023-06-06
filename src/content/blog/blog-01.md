@@ -9,8 +9,7 @@ tags:
   - github
   - api
 ogImage: ""
-description:
-  Github Respositories.
+description: Github Respositories.
 ---
 
 ### Public APIs by public-apis
