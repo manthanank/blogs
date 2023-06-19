@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2023-06-06T08:44:00Z
-title: What is ForwardRef Function in Angular?
+title: ForwardRef Function in Angular
 postSlug: forwardRef-function-in-angular
 featured: true
 draft: false
