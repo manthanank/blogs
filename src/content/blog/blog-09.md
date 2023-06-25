@@ -3,7 +3,7 @@ author: Manthan Ankolekar
 pubDatetime: 2023-06-01T10:44:00Z
 title: New Array methods in JavaScript.
 postSlug: new-array-methods-in-javaScript
-featured: true
+featured: false
 draft: false
 tags:
   - javascript

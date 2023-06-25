@@ -3,7 +3,7 @@ author: Manthan Ankolekar
 pubDatetime: 2023-06-23T10:44:00Z
 title: CSS flex Cheatsheet.
 postSlug: css-flex-cheastsheet
-featured: true
+featured: false
 draft: false
 tags:
   - css

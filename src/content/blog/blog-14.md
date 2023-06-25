@@ -3,7 +3,7 @@ author: Manthan Ankolekar
 pubDatetime: 2023-06-24T10:44:00Z
 title: Set up SSH key for GitLab on Windows.
 postSlug: set-up-ssh-key-for-gitLab-on-windows
-featured: true
+featured: false
 draft: false
 tags:
   - git

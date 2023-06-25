@@ -3,7 +3,7 @@ author: Configuring build cache in Angular App
 pubDatetime: 2023-04-22T05:35:45.757Z
 title: Configuring build cache in Angular App
 postSlug: configuring-build-cache-angular-app
-featured: true
+featured: false
 draft: false
 tags:
   - angular
