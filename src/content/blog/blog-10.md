@@ -3,7 +3,7 @@ author: Manthan Ankolekar
 pubDatetime: 2023-06-06T08:44:00Z
 title: ForwardRef Function in Angular
 postSlug: forwardRef-function-in-angular
-featured: true
+featured: false
 draft: false
 tags:
   - angular

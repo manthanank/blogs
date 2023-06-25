@@ -3,7 +3,7 @@ author: Manthan Ankolekar
 pubDatetime: 2023-06-22T10:44:00Z
 title: CSS grid Cheatsheet.
 postSlug: css-grid-cheastsheet
-featured: true
+featured: false
 draft: false
 tags:
   - css

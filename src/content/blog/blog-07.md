@@ -3,7 +3,7 @@ author: Manthan Ankolekar
 pubDatetime: 2023-05-18T08:44:00Z
 title: Router Debugging in Angular
 postSlug: router-debugging-in-angular
-featured: true
+featured: false
 draft: false
 tags:
   - angular

@@ -3,7 +3,7 @@ author: Manthan Ankolekar
 pubDatetime: 2023-04-28T08:44:00Z
 title: Cookies vs Local Storage vs Sesssion Storage
 postSlug: cookies-vs-local-storage-vs-sesssion-storage
-featured: true
+featured: false
 draft: false
 tags:
   - javascript
