@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2023-06-26T08:44:00Z
+pubDatetime: 2023-07-19T08:44:00Z
 title: Useful Input Decorator Features in Angular 16
 postSlug: useful-input-decorator-features-in-angular-16
 featured: false
