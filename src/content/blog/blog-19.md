@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2023-07-20T08:44:00Z
+pubDatetime: 2023-07-27T08:44:00Z
 title: Building a real-time chat application using Node.js, MongoDB, and Express
 postSlug: building-a-real-time-chat-application-using-nodejs-mongodb-and-express
 featured: false
