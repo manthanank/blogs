@@ -10,6 +10,8 @@ export const SITE: Site = {
   postPerPage: 3,
 };
 
+export const LOCALE = ["en-EN"]; // set to [] to use the environment default
+
 export const LOGO_IMAGE = {
   enable: false,
   svg: true,
@@ -46,13 +48,13 @@ export const SOCIALS: SocialObjects = [
     name: "Mail",
     href: "mailto:manthan.ank46@gmail.com",
     linkTitle: `Send an email to ${SITE.title}`,
-    active: false,
+    active: true,
   },
   {
     name: "Twitter",
     href: "https://twitter.com/manthan_ank",
     linkTitle: `${SITE.title} on Twitter`,
-    active: false,
+    active: true,
   },
   {
     name: "Twitch",
@@ -64,7 +66,7 @@ export const SOCIALS: SocialObjects = [
     name: "YouTube",
     href: "https://www.youtube.com/@manthanank",
     linkTitle: `${SITE.title} on YouTube`,
-    active: false,
+    active: true,
   },
   {
     name: "WhatsApp",
@@ -82,7 +84,7 @@ export const SOCIALS: SocialObjects = [
     name: "Pinterest",
     href: "https://in.pinterest.com/manthanank/",
     linkTitle: `${SITE.title} on Pinterest`,
-    active: false,
+    active: true,
   },
   {
     name: "TikTok",
