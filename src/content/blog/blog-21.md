@@ -1,162 +1,99 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2023-08-10T08:44:00Z
-title: MySQL CheatSheet
-postSlug: mysql-cheatsheet
+pubDatetime: 2023-06-19T08:44:00Z
+title: Difference between Promises and Observables.
+postSlug: difference-between-promises-and-observables
 featured: false
 draft: false
 tags:
-  - mysql
+  - javascript
+  - angular
 ogImage: ""
-description: MySQL CheatSheet
+description: Difference between Promises and Observables.
 ---
 
-Here's a MySQL cheat sheet with some commonly used commands and concepts:
+**Promises** and **observables** are both mechanisms for handling asynchronous operations in JavaScript, but they have some differences in terms of functionality and behavior.
 
-**Connecting to MySQL:**
+A **Promise** is an object that represents the eventual completion or failure of an asynchronous operation and its resulting value. It is used to handle a single asynchronous event. When a promise is created, it is in one of three states: pending, fulfilled, or rejected. A pending promise is in an initial state, and it transitions to either fulfilled (resolved) or rejected (with an error) when the asynchronous operation completes. Promises are typically used with the .then() and .catch() methods to handle the fulfillment or rejection of the promise.
 
-```bash
-mysql -u username -p
+- Promises are a single value that is either resolved or rejected.
+- Promises are eager, meaning they are executed immediately when they are created.
+- Promises can only handle one value.
+- Promises are not multicast, meaning they can only be subscribed to once.
+
+Example:
+
+```jsx
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Operation completed successfully");
+  }, 1000);
+});
+
+promise
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error(error);
+  });
 ```
 
-**Basic Commands:**
+An **Observable**, on the other hand, is a more powerful and flexible construct introduced in the RxJS library, which extends the concept of promises. Observables represent a stream of values over time, allowing multiple asynchronous events to be handled. They can emit zero or more values and also notify about errors or the completion of the stream. Observables are used with various operators and subscription mechanisms to handle these events.
 
-- Show Databases:
+- Observables are a stream of values that can be resolved, rejected, or emit values.
+- Observables are lazy, meaning they are not executed until they are subscribed to.
+- Observables can handle multiple values.
+- Observables are multicast, meaning they can be subscribed to multiple times.
 
-  ```bash
-  SHOW DATABASES;
-  ```
+Example:
 
-- Create Database:
+```jsx
+import { Observable } from "rxjs";
 
-  ```bash
-  CREATE DATABASE database_name;
-  ```
+const observable = new Observable(observer => {
+  setTimeout(() => {
+    observer.next("First value");
+  }, 1000);
 
-- Use Database:
+  setTimeout(() => {
+    observer.next("Second value");
+  }, 2000);
 
-  ```bash
-  USE database_name;
-  ```
+  setTimeout(() => {
+    observer.next("Third value");
+    observer.complete(); // Notify completion
+  }, 3000);
+});
 
-- Show Tables:
+const subscription = observable.subscribe(
+  value => console.log(value),
+  error => console.error(error),
+  () => console.log("Observable completed")
+);
 
-  ```bash
-  Show Tables
-  ```
+// Later, if necessary, you can unsubscribe
+subscription.unsubscribe();
+```
 
-- Describe Table:
+Differences between **promises** and **observables**:
 
-  ```bash
-  DESCRIBE table_name;
-  ```
+| Feature                | Promises                         | Observables                      |
+| ---------------------- | -------------------------------- | -------------------------------- |
+| Value Single           | value                            | Stream of values                 |
+| Execution              | Eager                            | Lazy                             |
+| Cancellation           | Can be canceled                  | Can be canceled                  |
+| Multiple subscriptions | No                               | Yes                              |
+| Error handling         | Propagates errors to subscribers | Propagates errors to subscribers |
 
-**Data Manipulation:**
+**Promises**:
 
-- Insert Data:
+- Making an API request
+- Waiting for a file to download
+- Opening a dialog box
 
-  ```bash
-  INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);
-  ```
+**Observables**:
 
-- Update Data:
-
-  ```bash
-  UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
-  ```
-
-- Delete Data:
-
-  ```bash
-  DELETE FROM table_name WHERE condition;
-  ```
-
-- Select Data:
-
-  ```bash
-  SELECT column1, column2, ... FROM table_name WHERE condition;
-  ```
-
-**Filtering and Sorting:**
-
-- Filtering with WHERE:
-
-  ```bash
-  SELECT * FROM table_name WHERE condition;
-  ```
-
-- Sorting with ORDER BY:
-
-  ```bash
-  SELECT * FROM table_name ORDER BY column_name ASC/DESC;
-  ```
-
-Aggregation Functions:
-
-- Count:
-
-  ```bash
-  SELECT COUNT(column_name) FROM table_name;
-  ```
-
-- Sum:
-
-  ```bash
-  SELECT SUM(column_name) FROM table_name;
-  ```
-
-- Average:
-
-  ```bash
-  SELECT AVG(column_name) FROM table_name;
-  ```
-
-**Joining Tables:**
-
-- Inner Join:
-
-  ```bash
-  SELECT * FROM table1 INNER JOIN table2 ON table1.column = table2.column;
-  ```
-
-- Left Join:
-
-  ```bash
-  SELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column;
-  ```
-
-- Grouping Data:
-
-  ```bash
-  SELECT column1, COUNT(*) FROM table_name GROUP BY column1;
-  ```
-
-**Indexes:**
-
-- Creating Index:
-
-  ```bash
-  CREATE INDEX index_name ON table_name(column_name);
-  ```
-
-- Dropping Index:
-
-  ```bash
-  DROP INDEX index_name ON table_name;
-  ```
-
-Backup and Restore:
-
-- Backup:
-
-  ```bash
-  mysqldump -u username -p database_name > backup.sql
-  ```
-
-- Restore:
-
-  ```bash
-  SHOW DATABASES;
-  ```
-
-Remember to replace username, database_name, table_name, etc., with your actual values. This cheat sheet covers the basics, but MySQL is a rich and powerful database system, so there's a lot more you can explore and learn.
+- Streaming data from a server
+- Handling user input events
+- Listening for network events
