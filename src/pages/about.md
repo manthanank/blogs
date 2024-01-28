@@ -3,10 +3,10 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-Hey, I'm Manthan Ankolekar, This is my blog site..
+Hey, I'm Manthan Ankolekar, This is my blog site.
 
 <!-- <div>
-  <img src="dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
 </div> -->
 
 ## Tech Stack
@@ -26,3 +26,6 @@ Here are certain features of this site.
 - pagination
 - sitemap & rss feed
 - highly customizable
+
+<!-- If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).
+Or you can even give any feedback via my [email](mailto:contact@satnaing.dev). -->
