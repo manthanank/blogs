@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2023-06-23T10:44:00Z
+pubDatetime: 2024-08-11T10:44:00Z
 title: JavaScript Array Tips and Tricks
 postSlug: javascript-array-tips-and-tricks
 featured: false
@@ -8,7 +8,7 @@ draft: false
 tags:
   - javascript
 ogImage: ""
-description: JavaScript arrays are a fundamental part of programming with the language. They offer a versatile way to handle collections of data. Whether you’re a beginner or a seasoned developer, there are always new tricks to learn to make your code more efficient and expressive. Here are some valuable tips and tricks for working with arrays in JavaScript.
+description: JavaScript arrays are a fundamental part of programming. Here are valuable tips and tricks for working with arrays in JavaScript.
 ---
 
 #### 1. **Destructuring Arrays**
