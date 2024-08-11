@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2023-01-04T08:44:00Z
+pubDatetime: 2023-06-23T10:44:00Z
 title: Angular with Bootstrap.
 postSlug: angular-with-bootstrap
 featured: false

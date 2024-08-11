@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2024-08-11T08:44:00Z
+pubDatetime: 2023-06-23T10:44:00Z
 title: JavaScript String Tips and Tricks
 postSlug: javascript-string-tips-and-tricks
 featured: false
