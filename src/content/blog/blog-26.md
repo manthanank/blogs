@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2023-06-23T10:44:00Z
+pubDatetime: 2024-08-11T08:44:00Z
 title: JavaScript String Tips and Tricks
 postSlug: javascript-string-tips-and-tricks
 featured: false
@@ -8,7 +8,7 @@ draft: false
 tags:
   - JavaScript
 ogImage: ""
-description: JavaScript strings are a fundamental part of any web development project. Mastering them can significantly improve your coding efficiency and enable you to handle text data more effectively. In this blog, we’ll explore some essential tips and tricks for working with strings in JavaScript.
+description: Learn essential JavaScript string tips and tricks to improve coding efficiency and handle text data effectively.
 ---
 
 ### 1. Template Literals for Multi-line Strings

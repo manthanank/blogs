@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2024-08-11T10:44:00Z
+pubDatetime: 2024-08-11T08:44:00Z
 title: JavaScript Array Tips and Tricks
 postSlug: javascript-array-tips-and-tricks
 featured: false
