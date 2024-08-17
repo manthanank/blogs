@@ -1,4 +1,5 @@
 import type { Site, SocialObjects } from "./types";
+import type { GiscusProps } from "@giscus/react";
 
 export const SITE: Site = {
   website: "https://manthanank.github.io/", // replace this with your deployed domain
@@ -36,13 +37,13 @@ export const SOCIALS: SocialObjects = [
     name: "Facebook",
     href: "https://www.facebook.com/manthanank/",
     linkTitle: `${SITE.title} on Facebook`,
-    active: true,
+    active: false,
   },
   {
     name: "Instagram",
     href: "https://www.instagram.com/manthan_ank/",
     linkTitle: `${SITE.title} on Instagram`,
-    active: true,
+    active: false,
   },
   {
     name: "LinkedIn",
@@ -54,7 +55,7 @@ export const SOCIALS: SocialObjects = [
     name: "Mail",
     href: "mailto:manthan.ank46@gmail.com",
     linkTitle: `Send an email to ${SITE.title}`,
-    active: true,
+    active: false,
   },
   {
     name: "Twitter",
@@ -72,7 +73,7 @@ export const SOCIALS: SocialObjects = [
     name: "YouTube",
     href: "https://www.youtube.com/@manthanank",
     linkTitle: `${SITE.title} on YouTube`,
-    active: true,
+    active: false,
   },
   {
     name: "WhatsApp",
@@ -90,7 +91,7 @@ export const SOCIALS: SocialObjects = [
     name: "Pinterest",
     href: "https://in.pinterest.com/manthanank/",
     linkTitle: `${SITE.title} on Pinterest`,
-    active: true,
+    active: false,
   },
   {
     name: "TikTok",
@@ -147,3 +148,16 @@ export const SOCIALS: SocialObjects = [
     active: false,
   },
 ];
+
+export const GISCUS: GiscusProps = {
+  repo: "manthanank/blogs",
+  repoId: "R_kgDOJXYJ7Q",
+  category: "Q&A",
+  categoryId: "DIC_kwDOJXYJ7c4ChdyN",
+  mapping: "pathname",
+  reactionsEnabled: "0",
+  emitMetadata: "0",
+  inputPosition: "bottom",
+  lang: "en",
+  loading: "lazy",
+};
