@@ -14,7 +14,7 @@ description: Learn how to build a unit converter app in Angular using Tailwind C
 
 Unit converters are handy tools for converting measurements between different units, making it easier to work with various systems of measurement. In this tutorial, we'll build a unit converter app in Angular that allows users to convert values between different length units, such as meters, kilometers, centimeters, and millimeters. We'll implement the conversion logic and use Tailwind CSS for styling to create a visually appealing and user-friendly interface.
 
-#### **Table of Contents**
+## **Table of Contents**
 
 - Introduction
 - Setting Up the Project
@@ -22,14 +22,15 @@ Unit converters are handy tools for converting measurements between different un
 - Styling with Tailwind CSS
 - Running the Application
 - Conclusion
+- Exploring the Code
 
 ---
 
-#### **Introduction**
+### **Introduction**
 
 A unit converter app provides a useful tool for converting measurements between different units, making it easier to work with various systems of measurement. In this project, we'll focus on length units, allowing users to convert values between meters, kilometers, centimeters, and millimeters. The app will feature a simple and intuitive interface that enables users to input a value, select the units to convert from and to, and view the converted result instantly.
 
-#### **Setting Up the Project**
+### **Setting Up the Project**
 
 Start by creating a new Angular project. If you haven't already set up Angular CLI, install it using the command:
 
@@ -71,7 +72,7 @@ Include Tailwind's base, components, and utilities in your `src/styles.css`:
 @tailwind utilities;
 ```
 
-#### **Implementing the Conversion Logic**
+### **Implementing the Conversion Logic**
 
 In `app.component.ts`, define the conversion logic between units:
 
@@ -176,7 +177,7 @@ export class AppComponent {
 
 This code sets up the basic conversion logic, handling user inputs for converting units of length.
 
-#### **Styling with Tailwind CSS**
+### **Styling with Tailwind CSS**
 
 Now, let's design the interface using Tailwind CSS in `app.component.html`:
 
@@ -235,7 +236,7 @@ Now, let's design the interface using Tailwind CSS in `app.component.html`:
 
 The design uses Tailwind CSS classes to create a simple, responsive UI that adjusts seamlessly across different devices.
 
-#### **Running the Application**
+### **Running the Application**
 
 Run your application with:
 
@@ -245,7 +246,7 @@ ng serve
 
 Navigate to `http://localhost:4200/` to see your Unit Converter App in action. You can input a value, select units from the dropdown menus, and click "Convert" to see the result instantly.
 
-#### **Conclusion**
+### **Conclusion**
 
 Congratulations! You've successfully built a unit converter app in Angular using Tailwind CSS for styling. This project demonstrates how to create a functional and visually appealing web application that provides a valuable tool for converting units of length. You can further enhance the app by adding more unit options, improving the design, or implementing additional features.
 
@@ -255,7 +256,7 @@ Happy coding!
 
 Feel free to customize the content as needed. Let me know if you have any questions or need further assistance. Good luck with your project! 🚀
 
-## Exploring the Code
+### Exploring the Code
 
 Visit the [GitHub repository](https://github.com/manthanank/unit-converter-app) to explore the code in detail.
 
