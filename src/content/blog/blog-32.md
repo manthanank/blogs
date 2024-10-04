@@ -1,8 +1,8 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-10-04T08:44:00Z
-title: Migrating to the `inject` Function in Angular: A Comprehensive Guide
-postSlug: migrating-to-the-inject-function-in-angular-a-comprehensive-guide
+title: Migrating to the `inject` Function in Angular in a Comprehensive Guide
+postSlug: migrating-to-the-inject-function-in-angular-in-a-comprehensive-guide
 featured: false
 draft: false
 tags:
