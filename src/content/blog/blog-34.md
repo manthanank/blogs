@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2024-17-11T08:44:00Z
+pubDatetime: 2024-10-17T08:44:00Z
 title: Creating Custom Directives in Angular - A Step-by-Step Guide
 postSlug: creating-custom-directives-in-angular-a-step-by-step-guide
 featured: false
