@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-10-21T08:44:00Z
-modDatetime:
+modDatetime: 2024-10-21T08:44:00Z
 title: Top VS Code Extensions for Angular Developers
 postSlug: top-vs-code-extensions-for-angular-developers
 featured: false
