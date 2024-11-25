@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2024-11-19T08:44:00Z
+pubDatetime: 2024-11-20T08:44:00Z
 modDatetime: 
 title: Building an Angular App with Enum - A Hands-On Guide
 postSlug: building-an-angular-app-with-enum-a-hands-on-guide
