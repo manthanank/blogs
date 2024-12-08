@@ -1,6 +1,6 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2024-12-09T08:44:00Z
+pubDatetime: 2024-12-08T08:44:00Z
 modDatetime: 
 title: Closures in JavaScript - The Key to Powerful and Flexible Code
 postSlug: closures-in-javascript-the-key-to-powerful-and-flexible-code
