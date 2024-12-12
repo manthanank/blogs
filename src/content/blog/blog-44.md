@@ -7,7 +7,7 @@ postSlug: building-a-tic-tac-toe-game-in-angular-a-beginners-guide
 featured: false
 draft: false
 tags:
-  - JavaScript
+  - Angular
 ogImage: ""
 description: "Learn how to build a Tic Tac Toe game in Angular v19 from scratch. This beginner-friendly guide will walk you through creating a simple yet engaging game using Angular's component-based architecture."
 ---
