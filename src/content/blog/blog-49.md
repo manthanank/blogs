@@ -28,8 +28,6 @@ Angular provides three types of view encapsulation:
 
 Let’s break these down with examples.  
 
----
-
 ## 1. **Emulated (Default View Encapsulation)**  
 
 ```typescript
@@ -59,8 +57,6 @@ export class EmulatedComponent {}
 ```
 
 - This ensures that `.text` styles are **only applied** within the `app-emulated` component.  
-
----
 
 ## 2. **ShadowDom (Native Encapsulation)**  
 
@@ -98,8 +94,6 @@ export class ShadowDomComponent {}
 ✅ Avoids global style conflicts.  
 ❌ Not supported in older browsers (e.g., IE11).  
 
----
-
 ## 3. **None (Global Styles)**  
 
 ```typescript
@@ -135,8 +129,6 @@ export class NoneComponent {}
 - When you want **global styles** to be applied across multiple components intentionally.  
 - In **third-party component libraries**, where encapsulation is unnecessary.  
 
----
-
 ## **Choosing the Right Encapsulation Strategy**  
 
 | Encapsulation Type  | Style Scoping | Affects Global Styles? | Use Case |
@@ -144,8 +136,6 @@ export class NoneComponent {}
 | **Emulated (Default)** | Scoped to the component | ❌ No | General component styling |
 | **ShadowDom** | Fully isolated (uses Shadow DOM) | ❌ No | When strict style encapsulation is needed |
 | **None** | Applied globally | ✅ Yes | When global styling is required |
-
----
 
 ## **Overriding Encapsulated Styles**  
 
@@ -164,8 +154,6 @@ app-emulated .text {
   color: purple !important;
 }
 ```
-
----
 
 ## **Conclusion**  
 
@@ -189,8 +177,6 @@ In this project, we will create an Angular application demonstrating **all three
 
 We will structure the project properly, using standalone components, and showcase the different encapsulation strategies.
 
----
-
 ### **Project Setup**  
 
 #### **1. Create a New Angular Project**
@@ -201,8 +187,6 @@ Run the following command in your terminal:
 ng new angular-examples
 cd angular-examples
 ```
-
----
 
 ### **2. Project Structure**  
 
@@ -224,8 +208,6 @@ angular-examples/
 │── package.json
 │── tsconfig.json
 ```
-
----
 
 ### **3. Implement Components**  
 
@@ -250,8 +232,6 @@ export class EmulatedComponent {}
 
 ✅ **CSS is scoped only to this component using attribute selectors.**  
 
----
-
 #### **(b) Shadow DOM Encapsulation Component**
 
 Create `shadow-dom.component.ts` inside `src/app/components/shadow-dom/`  
@@ -273,8 +253,6 @@ export class ShadowDomComponent {}
 
 ✅ **Uses the browser's native Shadow DOM for complete style isolation.**  
 
----
-
 #### **(c) None (Global Styling) Component**
 
 Create `none.component.ts` inside `src/app/components/none/`  
@@ -295,8 +273,6 @@ export class NoneComponent {}
 ```
 
 ✅ **Applies styles globally, affecting other components with the same class.**  
-
----
 
 ### **4. Configure `app.component.ts`**  
 
@@ -331,8 +307,6 @@ import { NoneComponent } from './components/none/none.component';
 export class AppComponent {}
 ```
 
----
-
 ### **5. Run the Project**
 
 Start the Angular server:  
@@ -340,8 +314,6 @@ Start the Angular server:
 ```sh
 ng serve
 ```
-
----
 
 ### **6. Expected Output**  
 
@@ -360,8 +332,6 @@ This is No Encapsulation.            (Green, Underline)
 - **Emulated:** Inspect the element; styles should have `_ngcontent-xyz` attributes.  
 - **ShadowDom:** Open the component in DevTools; styles should be inside `#shadow-root`.  
 - **None:** Styles should appear globally in the `styles` section.  
-
----
 
 ### **Conclusion of the Angular Project**
 
