@@ -343,4 +343,4 @@ This project demonstrates Angular's **View Encapsulation** strategies in action.
 | **Shadow DOM** | Fully isolated styles | Strict encapsulation needed |
 | **None** | Global styles applied everywhere | When styles should be shared |
 
-Feel free to explore the [GitHub repository](https://github.com/manthanank/angular-examples/tree/view-encapulation) and [Stackblitz Link](https://stackblitz.com/edit/angular-view-encapsulation-examples) for more details and to try out the project yourself. Happy coding!
+Feel free to explore the [GitHub repository](https://github.com/manthanank/angular-examples/tree/view-encapsulation) and [Stackblitz Link](https://stackblitz.com/edit/angular-view-encapsulation-examples) for more details and to try out the project yourself. Happy coding!
