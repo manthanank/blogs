@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2025-01-31T08:44:00Z
-modDatetime: 2025-01-31T08:44:00Z
+modDatetime: 2025-01-31T09:44:00Z
 title: Angular View Encapsulation - A Practical Guide to Component Styling
 postSlug: angular-view-encapsulation-a-practical-guide-to-component-styling
 featured: false
