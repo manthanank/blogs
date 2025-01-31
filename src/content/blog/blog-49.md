@@ -1,9 +1,9 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2025-01-28T08:44:00Z
+pubDatetime: 2025-01-31T08:44:00Z
 modDatetime: 
-title: Understanding View Encapsulation in Angular
-postSlug: understanding-view-encapsulation-in-angular
+title: Angular View Encapsulation - A Practical Guide to Component Styling
+postSlug: angular-view-encapsulation-a-practical-guide-to-component-styling
 featured: false
 draft: false
 tags:
