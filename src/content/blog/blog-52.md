@@ -1,15 +1,15 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2025-02-25T08:44:00Z
-modDatetime: 
-title: Managing Environment Variables in Angular Using --define and fetch()
-postSlug: managing-environment-variables-in-angular-using-define-and-fetch
+modDatetime: 2025-02-26T08:44:00Z
+title: Managing Environment Variables in Angular Using --define
+postSlug: managing-environment-variables-in-angular-using-define
 featured: false
 draft: false
 tags:
   - Angular
 ogImage: ""
-description: "Learn how to manage environment variables in Angular using --define and fetch() for better security and flexibility."
+description: "Learn how to manage environment variables in Angular using --define for better security and flexibility."
 ---
 
 Handling environment-specific configurations is crucial in Angular applications, especially when dealing with sensitive data like API keys. Instead of hardcoding values in environment files, we can dynamically inject them at build time using the `--define` flag.  
