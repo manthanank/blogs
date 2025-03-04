@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2025-03-04T08:44:00Z
-modDatetime: 
+modDatetime: 2025-03-04T08:44:00Z
 title: Mastering Angular's Resource API - A Practical Guide
 postSlug: mastering-angular-resource-api
 featured: false
@@ -179,22 +179,28 @@ The **Resource API** provides built-in state management, making it easy to handl
 
 ## 🔹 **Running the Project**  
 
-To get started with **AngularExamples**, follow these steps:  
+To get started with **Angular Examples**, follow these steps:  
 
 1️⃣ **Clone the Repository:**
 
 ```bash
-git clone https://github.com/yourusername/angular-examples.git
+git clone https://github.com/manthanank/angular-examples.git
 cd angular-examples
 ```  
 
-2️⃣ **Install Dependencies:**
+2️⃣ **Checkout to resource Branch:**
+
+```bash
+git checkout resource
+```
+
+3️⃣ **Install Dependencies:**
 
 ```bash
 npm install
 ```  
 
-3️⃣ **Run the Development Server:**
+4️⃣ **Run the Development Server:**
 
 ```bash
 ng serve
