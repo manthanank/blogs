@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2025-03-06T08:44:00Z
-modDatetime: 
+modDatetime: 2025-03-08T08:44:00Z
 title: Enhancing Angular Applications with afterRenderEffect and Signals
 postSlug: exploring-angular-linkedsignal
 featured: false
@@ -49,41 +49,63 @@ import { afterRenderEffect, Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
+  imports: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  // Signal to hold the message
   message = signal('Initial Message');
-
-  // Signal to store the input field value
   inputValue = signal('');
+  counter = signal(0);
+  showCounter = signal(true);
 
   constructor() {
-    // Logs when the message updates in the DOM
-    afterRenderEffect(() => {
-      console.log('Message updated in DOM:', this.message());
+    afterRenderEffect({
+      earlyRead: (onCleanup) => {
+        console.log('Message updated in DOM:', this.message());
+        onCleanup(() => {
+          console.log('Cleanup for message effect');
+        });
+      },
+      write: () => {
+        if (this.inputValue() !== '') {
+          console.log('Input value updated:', this.inputValue());
+        }
+        console.log('Counter updated:', this.counter());
+      },
+      mixedReadWrite: () => console.log('Mixed read/write effect'),
+      read: () => console.log('Read effect'),
     });
 
-    // Logs when the input value changes
     afterRenderEffect(() => {
-      console.log('Input value updated:', this.inputValue());
+      if (this.showCounter()) {
+        console.log('Counter visibility: Visible');
+      } else {
+        console.log('Counter visibility: Hidden');
+      }
     });
   }
 
-  // Check if input is valid (non-empty)
   isValidInput(): boolean {
     return this.inputValue().trim() !== '';
   }
 
-  // Update message when button is clicked
   updateMessage() {
-    this.message.set(this.inputValue());
+    if (this.isValidInput()) {
+      this.message.set(this.inputValue());
+      this.counter.update((value) => value + 1);
+    }
   }
 
-  // Update inputValue as user types
-  updateInputValue(event: any) {
-    this.inputValue.set(event.target.value);
+  updateInputValue(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (target) {
+      this.inputValue.set(target.value);
+    }
+  }
+
+  toggleCounterVisibility() {
+    this.showCounter.update((value) => !value);
   }
 }
 ```  
@@ -97,10 +119,17 @@ export class AppComponent {
   <p class="message">{{ message() }}</p>
   <div class="input-row">
     <input type="text" [value]="inputValue()" (input)="updateInputValue($event)" placeholder="Enter text"
-      class="input-field">
-    <button class="update-button" (click)="updateMessage()" [disabled]="!isValidInput()">Update</button>
+      class="input-field" />
+    <button class="update-button" (click)="updateMessage()" [disabled]="!isValidInput()">
+      Update
+    </button>
   </div>
   <p class="input-value">Input Value: {{ inputValue() }}</p>
+
+  @if(showCounter()){
+  <p>Counter: {{ counter() }}</p>
+  }
+  <button class="toggle-counter-button" (click)="toggleCounterVisibility()">Toggle Counter</button>
 </div>
 ```  
 
@@ -112,50 +141,71 @@ export class AppComponent {
 .container {
   font-family: sans-serif;
   padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
   border: 1px solid #ddd;
   border-radius: 5px;
-  width: 400px;
-  margin: 20px auto;
 }
+
 .message {
   color: #333;
   font-size: 1.5em;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
+
 .input-row {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
   gap: 10px;
 }
+
 .input-field {
+  flex-grow: 1;
+  padding: 8px;
   border: 1px solid #ccc;
-  padding: 10px;
-  width: 70%;
-  box-sizing: border-box;
   border-radius: 4px;
   font-size: 1em;
+  box-sizing: border-box;
 }
+
 .update-button {
+  padding: 8px 15px;
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1em;
 }
+
 .update-button:hover {
   background-color: #0056b3;
 }
+
 .update-button:disabled {
-  background-color: #ddd;
-  color: #999;
+  background-color: #ccc;
   cursor: not-allowed;
 }
+
 .input-value {
   font-weight: 600;
   color: #555;
   margin-top: 10px;
+}
+
+.toggle-counter-button {
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.toggle-counter-button:hover {
+  background-color: #218838;
 }
 ```  
 
