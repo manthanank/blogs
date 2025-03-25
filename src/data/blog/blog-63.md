@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2025-03-25T08:44:00Z
-modDatetime: 
+modDatetime: 2025-03-25T08:44:00Z
 title: Mastering Angular's New Control Flow with TypeScript Code Examples
 postSlug: mastering-angular-new-control-flow-with-typescript-code-examples
 featured: false
@@ -253,6 +253,12 @@ The new control flow is **enabled by default** in Angular v17+. If you're using 
 
 ```sh
 ng update @angular/core @angular/cli
+```
+
+or
+
+```sh
+ng generate @angular/core:control-flow
 ```
 
 Once updated, you can start using `@if`, `@for`, and `@switch` in your templates.  
