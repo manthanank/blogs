@@ -36,10 +36,53 @@ function reflect(): void {
 
 function setup(): void {
   reflect();
-  document.querySelector("#theme-btn")?.addEventListener("click", () => {
-    themeValue = themeValue === LIGHT ? DARK : LIGHT;
-    persist();
-  });
+  document
+    .querySelector("#theme-btn")
+    ?.addEventListener("click", (event: Event) => {
+      const mouseEvent = event as MouseEvent;
+      const isDark = themeValue === DARK;
+
+      const doc = document as any;
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      if (!doc.startViewTransition || prefersReducedMotion) {
+        themeValue = isDark ? LIGHT : DARK;
+        persist();
+        return;
+      }
+
+      const x = mouseEvent.clientX;
+      const y = mouseEvent.clientY;
+      const endRadius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      );
+
+      const transition = doc.startViewTransition(() => {
+        themeValue = isDark ? LIGHT : DARK;
+        persist();
+      });
+
+      transition.ready.then(() => {
+        const clipPath = [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${endRadius}px at ${x}px ${y}px)`,
+        ];
+        document.documentElement.animate(
+          {
+            clipPath: isDark ? [...clipPath].reverse() : clipPath,
+          },
+          {
+            duration: 400,
+            easing: "ease-in-out",
+            pseudoElement: isDark
+              ? "::view-transition-old(root)"
+              : "::view-transition-new(root)",
+          }
+        );
+      });
+    });
 }
 
 setup();
