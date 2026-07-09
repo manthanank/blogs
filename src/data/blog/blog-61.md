@@ -143,12 +143,10 @@ async function modifyImageController(req, res) {
 
   try {
     const modifiedImagePath = await modifyImage(prompt, imageFile.path);
-    res
-      .status(200)
-      .json({
-        message: "Image modified successfully",
-        imagePath: modifiedImagePath,
-      });
+    res.status(200).json({
+      message: "Image modified successfully",
+      imagePath: modifiedImagePath,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
