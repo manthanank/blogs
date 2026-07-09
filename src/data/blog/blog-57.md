@@ -14,86 +14,86 @@ description: "Discover how to use afterRenderEffect and Signals in Angular for e
 
 ### **Introduction**
 
-With the introduction of **Angular Signals**, state management has become more efficient and intuitive. One powerful feature that complements Signals is **`afterRenderEffect`**, which allows us to execute code after the DOM has been updated.  
+With the introduction of **Angular Signals**, state management has become more efficient and intuitive. One powerful feature that complements Signals is **`afterRenderEffect`**, which allows us to execute code after the DOM has been updated.
 
-In this blog, we'll explore **`afterRenderEffect`**, its use cases, and how it integrates with **Angular Signals**. We'll also walk through an example where we dynamically update a message based on user input while ensuring that DOM updates are efficiently handled.  
+In this blog, we'll explore **`afterRenderEffect`**, its use cases, and how it integrates with **Angular Signals**. We'll also walk through an example where we dynamically update a message based on user input while ensuring that DOM updates are efficiently handled.
 
 ---
 
-## **🔹 What is afterRenderEffect?**  
+## **🔹 What is afterRenderEffect?**
 
-`afterRenderEffect` is a lifecycle hook that runs **after** the component has rendered and the DOM has been updated.  
+`afterRenderEffect` is a lifecycle hook that runs **after** the component has rendered and the DOM has been updated.
 
-### **🔹 Why use `afterRenderEffect`?**  
+### **🔹 Why use `afterRenderEffect`?**
 
 ✅ Ensures **side effects** (e.g., logging, API calls, animations) happen after DOM updates  
 ✅ Works seamlessly with **Angular Signals**  
 ✅ Eliminates the need for manual change detection  
-✅ Helps in debugging state changes  
+✅ Helps in debugging state changes
 
 ---
 
-## **🔹 Implementing afterRenderEffect in an Angular Component**  
+## **🔹 Implementing afterRenderEffect in an Angular Component**
 
 Let's create a simple **Message Updater** application where:  
 ✔ Users can enter a message in an input field  
 ✔ The message updates dynamically upon clicking a button  
-✔ We use `afterRenderEffect` to log changes **after the DOM is updated**  
+✔ We use `afterRenderEffect` to log changes **after the DOM is updated**
 
 ---
 
-### **1️⃣ Component Implementation**  
+### **1️⃣ Component Implementation**
 
 ```typescript
-import { afterRenderEffect, Component, signal } from '@angular/core';
+import { afterRenderEffect, Component, signal } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   imports: [],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.css",
 })
 export class AppComponent {
-  message = signal('Initial Message');
-  inputValue = signal('');
+  message = signal("Initial Message");
+  inputValue = signal("");
   counter = signal(0);
   showCounter = signal(true);
 
   constructor() {
     afterRenderEffect({
-      earlyRead: (onCleanup) => {
-        console.log('Message updated in DOM:', this.message());
+      earlyRead: onCleanup => {
+        console.log("Message updated in DOM:", this.message());
         onCleanup(() => {
-          console.log('Cleanup for message effect');
+          console.log("Cleanup for message effect");
         });
       },
       write: () => {
-        if (this.inputValue() !== '') {
-          console.log('Input value updated:', this.inputValue());
+        if (this.inputValue() !== "") {
+          console.log("Input value updated:", this.inputValue());
         }
-        console.log('Counter updated:', this.counter());
+        console.log("Counter updated:", this.counter());
       },
-      mixedReadWrite: () => console.log('Mixed read/write effect'),
-      read: () => console.log('Read effect'),
+      mixedReadWrite: () => console.log("Mixed read/write effect"),
+      read: () => console.log("Read effect"),
     });
 
     afterRenderEffect(() => {
       if (this.showCounter()) {
-        console.log('Counter visibility: Visible');
+        console.log("Counter visibility: Visible");
       } else {
-        console.log('Counter visibility: Hidden');
+        console.log("Counter visibility: Hidden");
       }
     });
   }
 
   isValidInput(): boolean {
-    return this.inputValue().trim() !== '';
+    return this.inputValue().trim() !== "";
   }
 
   updateMessage() {
     if (this.isValidInput()) {
       this.message.set(this.inputValue());
-      this.counter.update((value) => value + 1);
+      this.counter.update(value => value + 1);
     }
   }
 
@@ -105,22 +105,31 @@ export class AppComponent {
   }
 
   toggleCounterVisibility() {
-    this.showCounter.update((value) => !value);
+    this.showCounter.update(value => !value);
   }
 }
-```  
+```
 
 ---
 
-### **2️⃣ Creating the HTML Template**  
+### **2️⃣ Creating the HTML Template**
 
 ```html
 <div class="container">
   <p class="message">{{ message() }}</p>
   <div class="input-row">
-    <input type="text" [value]="inputValue()" (input)="updateInputValue($event)" placeholder="Enter text"
-      class="input-field" />
-    <button class="update-button" (click)="updateMessage()" [disabled]="!isValidInput()">
+    <input
+      type="text"
+      [value]="inputValue()"
+      (input)="updateInputValue($event)"
+      placeholder="Enter text"
+      class="input-field"
+    />
+    <button
+      class="update-button"
+      (click)="updateMessage()"
+      [disabled]="!isValidInput()"
+    >
       Update
     </button>
   </div>
@@ -129,13 +138,15 @@ export class AppComponent {
   @if(showCounter()){
   <p>Counter: {{ counter() }}</p>
   }
-  <button class="toggle-counter-button" (click)="toggleCounterVisibility()">Toggle Counter</button>
+  <button class="toggle-counter-button" (click)="toggleCounterVisibility()">
+    Toggle Counter
+  </button>
 </div>
-```  
+```
 
 ---
 
-### **3️⃣ Styling the UI with CSS**  
+### **3️⃣ Styling the UI with CSS**
 
 ```css
 .container {
@@ -207,49 +218,49 @@ export class AppComponent {
 .toggle-counter-button:hover {
   background-color: #218838;
 }
-```  
+```
 
 ---
 
-## **🔹 How Does afterRenderEffect Work in This Example?**  
+## **🔹 How Does afterRenderEffect Work in This Example?**
 
 1️⃣ **Logging Message Updates:**
 
-- When a user clicks **Update**, `message` updates, and **afterRenderEffect** logs the new message **after** the DOM reflects the change.  
+- When a user clicks **Update**, `message` updates, and **afterRenderEffect** logs the new message **after** the DOM reflects the change.
 
 2️⃣ **Tracking Input Changes:**
 
-- As users type, `inputValue` updates, and **afterRenderEffect** logs the new input.  
+- As users type, `inputValue` updates, and **afterRenderEffect** logs the new input.
 
 3️⃣ **Ensuring Side Effects Run at the Right Time:**
 
-- `console.log('Message updated in DOM:', this.message());` only runs **after the UI is updated**, ensuring we never log stale data.  
+- `console.log('Message updated in DOM:', this.message());` only runs **after the UI is updated**, ensuring we never log stale data.
 
 ---
 
-## **🔹 Why Use afterRenderEffect Instead of ngAfterViewChecked?**  
+## **🔹 Why Use afterRenderEffect Instead of ngAfterViewChecked?**
 
-| Feature             | `afterRenderEffect` | `ngAfterViewChecked` |
-|--------------------|-------------------|----------------------|
-| **When it runs**  | After DOM updates  | After every change detection cycle |
-| **Performance**   | Optimized          | Can be inefficient if overused |
-| **Works with Signals** | ✅ Yes          | ❌ No |
-| **Ideal for**     | UI-related side effects | General change detection |
+| Feature                | `afterRenderEffect`     | `ngAfterViewChecked`               |
+| ---------------------- | ----------------------- | ---------------------------------- |
+| **When it runs**       | After DOM updates       | After every change detection cycle |
+| **Performance**        | Optimized               | Can be inefficient if overused     |
+| **Works with Signals** | ✅ Yes                  | ❌ No                              |
+| **Ideal for**          | UI-related side effects | General change detection           |
 
-Since **`afterRenderEffect` is optimized for Signals**, it avoids performance issues caused by `ngAfterViewChecked`.  
+Since **`afterRenderEffect` is optimized for Signals**, it avoids performance issues caused by `ngAfterViewChecked`.
 
 ---
 
-## **🔹 Running the Project**  
+## **🔹 Running the Project**
 
-To try out **afterRenderEffect** in your project:  
+To try out **afterRenderEffect** in your project:
 
 1️⃣ **Clone the Repository:**
 
 ```bash
 git clone https://github.com/yourusername/angular-examples.git
 cd angular-examples
-```  
+```
 
 2️⃣ **Checkout to afterrendereffect Branch:**
 
@@ -261,33 +272,33 @@ git checkout afterrendereffect
 
 ```bash
 npm install
-```  
+```
 
 4️⃣ **Run the Development Server:**
 
 ```bash
 ng serve
-```  
+```
 
-Now, open your browser and go to `http://localhost:4200/`. 🎉  
+Now, open your browser and go to `http://localhost:4200/`. 🎉
 
 ---
 
-## **🔹 Conclusion**  
+## **🔹 Conclusion**
 
-The **afterRenderEffect API** is a powerful tool for managing **side effects** in Angular applications. By ensuring that code runs **only after DOM updates**, it improves performance and prevents unnecessary re-executions.  
+The **afterRenderEffect API** is a powerful tool for managing **side effects** in Angular applications. By ensuring that code runs **only after DOM updates**, it improves performance and prevents unnecessary re-executions.
 
 ### Exploring the Code
 
 Visit the [GitHub repository](https://github.com/manthanank/angular-examples/tree/afterrendereffect) to explore the code in detail.
 
-### Live Demo  
+### Live Demo
 
-Check out the working example on [StackBlitz](https://stackblitz.com/edit/stackblitz-starters-1bbjkjpl)  
+Check out the working example on [StackBlitz](https://stackblitz.com/edit/stackblitz-starters-1bbjkjpl)
 
 ---
 
-## Additional Resources  
+## Additional Resources
 
 - [Angular afterRenderEffect Documentation](https://angular.dev/api/core/afterRenderEffect)
 - [Angular Signals Guide](https://angular.dev/guide/signals)

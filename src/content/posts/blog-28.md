@@ -61,7 +61,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
 Include Tailwind's base, components, and utilities in your `src/styles.css`:
@@ -77,23 +77,23 @@ Include Tailwind's base, components, and utilities in your `src/styles.css`:
 In `app.component.ts`, define the conversion logic between units:
 
 ```typescript
-import { Component, inject, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { Meta } from '@angular/platform-browser';
+import { Component, inject, signal } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { FormsModule } from "@angular/forms";
+import { Meta } from "@angular/platform-browser";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
   imports: [RouterOutlet, FormsModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
 export class AppComponent {
-  units = signal(['Meter', 'Kilometer', 'Centimeter', 'Millimeter']);
+  units = signal(["Meter", "Kilometer", "Centimeter", "Millimeter"]);
   inputValue = signal(0);
-  fromUnit = signal('Meter');
-  toUnit = signal('Meter');
+  fromUnit = signal("Meter");
+  toUnit = signal("Meter");
   result = signal<number | null>(null);
   errorMessage = signal<string | null>(null);
 
@@ -101,34 +101,34 @@ export class AppComponent {
 
   constructor() {
     this.meta.addTag({
-      name: 'viewport',
-      content: 'width=device-width, initial-scale=1',
+      name: "viewport",
+      content: "width=device-width, initial-scale=1",
     });
     this.meta.addTag({
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: 'favicon.ico',
+      rel: "icon",
+      type: "image/x-icon",
+      href: "favicon.ico",
     });
     this.meta.addTag({
-      rel: 'canonical',
-      href: 'https://unit-converter-app-manthanank.vercel.app/',
+      rel: "canonical",
+      href: "https://unit-converter-app-manthanank.vercel.app/",
     });
-    this.meta.addTag({ property: 'og:title', content: 'Unit Converter App' });
-    this.meta.addTag({ name: 'author', content: 'Manthan Ankolekar' });
-    this.meta.addTag({ name: 'keywords', content: 'angular' });
-    this.meta.addTag({ name: 'robots', content: 'index, follow' });
+    this.meta.addTag({ property: "og:title", content: "Unit Converter App" });
+    this.meta.addTag({ name: "author", content: "Manthan Ankolekar" });
+    this.meta.addTag({ name: "keywords", content: "angular" });
+    this.meta.addTag({ name: "robots", content: "index, follow" });
     this.meta.addTag({
-      property: 'og:description',
+      property: "og:description",
       content:
-        'A simple unit converter app built using Angular that converts units like meter, kilometer, and more.',
+        "A simple unit converter app built using Angular that converts units like meter, kilometer, and more.",
     });
     this.meta.addTag({
-      property: 'og:image',
-      content: 'https://unit-converter-app-manthanank.vercel.app/image.jpg',
+      property: "og:image",
+      content: "https://unit-converter-app-manthanank.vercel.app/image.jpg",
     });
     this.meta.addTag({
-      property: 'og:url',
-      content: 'https://unit-converter-app-manthanank.vercel.app/',
+      property: "og:url",
+      content: "https://unit-converter-app-manthanank.vercel.app/",
     });
   }
 
@@ -152,8 +152,8 @@ export class AppComponent {
 
   reset() {
     this.inputValue.set(0);
-    this.fromUnit.set('Meter');
-    this.toUnit.set('Meter');
+    this.fromUnit.set("Meter");
+    this.toUnit.set("Meter");
     this.result.set(null);
     this.errorMessage.set(null);
   }
@@ -166,7 +166,7 @@ export class AppComponent {
 
   validateInput(): boolean {
     if (this.inputValue() < 0) {
-      this.errorMessage.set('Input value cannot be negative.');
+      this.errorMessage.set("Input value cannot be negative.");
       return false;
     }
     this.errorMessage.set(null);
@@ -182,20 +182,31 @@ This code sets up the basic conversion logic, handling user inputs for convertin
 Now, let's design the interface using Tailwind CSS in `app.component.html`:
 
 ```html
-<div class="min-h-screen flex items-center justify-center bg-gray-100">
-  <div class="p-6 max-w-3xl mx-auto bg-white rounded-xl shadow-md space-y-4">
-    <h2 class="text-2xl font-bold text-center">Unit Converter</h2>
+<div class="flex min-h-screen items-center justify-center bg-gray-100">
+  <div class="mx-auto max-w-3xl space-y-4 rounded-xl bg-white p-6 shadow-md">
+    <h2 class="text-center text-2xl font-bold">Unit Converter</h2>
 
     <div class="space-y-2">
-      <label for="inputValue" class="block text-sm font-medium text-gray-700">Input Value:</label>
-      <input type="number" id="inputValue" [(ngModel)]="inputValue"
-        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+      <label for="inputValue" class="block text-sm font-medium text-gray-700"
+        >Input Value:</label
+      >
+      <input
+        type="number"
+        id="inputValue"
+        [(ngModel)]="inputValue"
+        class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none sm:text-sm"
+      />
     </div>
 
     <div class="space-y-2">
-      <label for="fromUnit" class="block text-sm font-medium text-gray-700">From:</label>
-      <select id="fromUnit" [(ngModel)]="fromUnit"
-        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <label for="fromUnit" class="block text-sm font-medium text-gray-700"
+        >From:</label
+      >
+      <select
+        id="fromUnit"
+        [(ngModel)]="fromUnit"
+        class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none sm:text-sm"
+      >
         @for (unit of units(); track $index) {
         <option [value]="unit">{{ unit }}</option>
         }
@@ -203,32 +214,45 @@ Now, let's design the interface using Tailwind CSS in `app.component.html`:
     </div>
 
     <div class="space-y-2">
-      <label for="toUnit" class="block text-sm font-medium text-gray-700">To:</label>
-      <select id="toUnit" [(ngModel)]="toUnit"
-        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-        @for (unit of units(); track $index) {
-        @if (unit !== fromUnit()) {
+      <label for="toUnit" class="block text-sm font-medium text-gray-700"
+        >To:</label
+      >
+      <select
+        id="toUnit"
+        [(ngModel)]="toUnit"
+        class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none sm:text-sm"
+      >
+        @for (unit of units(); track $index) { @if (unit !== fromUnit()) {
         <option [value]="unit">{{ unit }}</option>
-        }
-        }
+        } }
       </select>
     </div>
 
     <div class="flex space-x-2">
-      <button (click)="convert()"
-        class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Convert</button>
-      <button (click)="reset()"
-        class="w-full bg-gray-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Reset</button>
-      <button (click)="swapUnits()"
-        class="w-full bg-yellow-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">Swap</button>
+      <button
+        (click)="convert()"
+        class="w-full rounded-md bg-indigo-600 px-4 py-2 text-white shadow-sm hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none"
+      >
+        Convert
+      </button>
+      <button
+        (click)="reset()"
+        class="w-full rounded-md bg-gray-600 px-4 py-2 text-white shadow-sm hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none"
+      >
+        Reset
+      </button>
+      <button
+        (click)="swapUnits()"
+        class="w-full rounded-md bg-yellow-600 px-4 py-2 text-white shadow-sm hover:bg-yellow-700 focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:outline-none"
+      >
+        Swap
+      </button>
     </div>
 
     @if (errorMessage()){
-    <div class="text-red-500 text-center mt-4">{{ errorMessage() }}</div>
-    }
-
-    @if (result() !== null) {
-    <h3 class="text-xl font-semibold text-center mt-4">Result: {{result()}}</h3>
+    <div class="mt-4 text-center text-red-500">{{ errorMessage() }}</div>
+    } @if (result() !== null) {
+    <h3 class="mt-4 text-center text-xl font-semibold">Result: {{result()}}</h3>
     }
   </div>
 </div>

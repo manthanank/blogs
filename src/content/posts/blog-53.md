@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2025-02-27T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Fetching and Displaying Data in Angular Using httpResource
 postSlug: fetching-and-displaying-data-in-angular-using-httpresource
 featured: false
@@ -57,8 +57,8 @@ The blog component fetches posts from JSONPlaceholder and displays them in a gri
 ### **Component Code: `app.component.ts`**
 
 ```typescript
-import { httpResource } from '@angular/common/http';
-import { Component, computed, Resource } from '@angular/core';
+import { httpResource } from "@angular/common/http";
+import { Component, computed, Resource } from "@angular/core";
 
 export interface Post {
   userId: number;
@@ -68,14 +68,14 @@ export interface Post {
 }
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.css",
 })
 export class AppComponent {
-  title = 'angular-blog';
+  title = "angular-blog";
 
-  apiUrl = 'https://jsonplaceholder.typicode.com';
+  apiUrl = "https://jsonplaceholder.typicode.com";
 
   posts = httpResource<Post[]>(`${this.apiUrl}/posts`);
   error = computed(() => {
@@ -106,29 +106,27 @@ The fetched posts are displayed in the `app.component.html` file.
   </header>
 
   @if (posts.isLoading()) {
-    <div class="loading">
-      <p>Loading posts...</p>
-      <div class="spinner"></div>
-    </div>
+  <div class="loading">
+    <p>Loading posts...</p>
+    <div class="spinner"></div>
+  </div>
+  } @else { @if (error()) {
+  <div class="error">
+    <p>Error loading posts: {{ error() }}</p>
+  </div>
   } @else {
-    @if (error()) {
-      <div class="error">
-        <p>Error loading posts: {{ error() }}</p>
-      </div>
-    } @else {
-      <div class="posts-grid">
-        @for (post of posts.value(); track post.id) {
-          <article class="post-card">
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.body }}</p>
-            <footer>
-              <small>Post ID: {{ post.id }}</small>
-            </footer>
-          </article>
-        }
-      </div>
+  <div class="posts-grid">
+    @for (post of posts.value(); track post.id) {
+    <article class="post-card">
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.body }}</p>
+      <footer>
+        <small>Post ID: {{ post.id }}</small>
+      </footer>
+    </article>
     }
-  }
+  </div>
+  } }
 </div>
 ```
 
@@ -154,7 +152,8 @@ header {
   margin-bottom: 2rem;
 }
 
-.loading, .error {
+.loading,
+.error {
   text-align: center;
   padding: 2rem;
 }
@@ -194,9 +193,9 @@ This makes the blog **responsive, visually appealing, and user-friendly**.
 To enable HTTP requests, update `app.config.ts`:
 
 ```typescript
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { ApplicationConfig, provideZoneChangeDetection } from "@angular/core";
+import { provideRouter } from "@angular/router";
+import { provideHttpClient } from "@angular/common/http";
 
 export const appConfig: ApplicationConfig = {
   providers: [

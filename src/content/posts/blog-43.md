@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-12-08T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Closures in JavaScript - The Key to Powerful and Flexible Code
 postSlug: closures-in-javascript-the-key-to-powerful-and-flexible-code
 featured: false
@@ -36,10 +36,10 @@ To understand closures, you need to grasp the concept of **lexical scoping**. In
 
 ```javascript
 function outerFunction(outerVariable) {
-    return function innerFunction(innerVariable) {
-        console.log(`Outer Variable: ${outerVariable}`);
-        console.log(`Inner Variable: ${innerVariable}`);
-    };
+  return function innerFunction(innerVariable) {
+    console.log(`Outer Variable: ${outerVariable}`);
+    console.log(`Inner Variable: ${innerVariable}`);
+  };
 }
 
 const myFunction = outerFunction("Hello");
@@ -73,30 +73,30 @@ Closures allow functions to create private variables that cannot be accessed dir
 
 ```javascript
 function bankAccount(initialBalance) {
-    let balance = initialBalance;
+  let balance = initialBalance;
 
-    return {
-        deposit(amount) {
-            balance += amount;
-            console.log(`Deposited: $${amount}. New Balance: $${balance}`);
-        },
-        withdraw(amount) {
-            if (amount > balance) {
-                console.log("Insufficient funds!");
-            } else {
-                balance -= amount;
-                console.log(`Withdrew: $${amount}. New Balance: $${balance}`);
-            }
-        },
-        getBalance() {
-            return balance;
-        },
-    };
+  return {
+    deposit(amount) {
+      balance += amount;
+      console.log(`Deposited: $${amount}. New Balance: $${balance}`);
+    },
+    withdraw(amount) {
+      if (amount > balance) {
+        console.log("Insufficient funds!");
+      } else {
+        balance -= amount;
+        console.log(`Withdrew: $${amount}. New Balance: $${balance}`);
+      }
+    },
+    getBalance() {
+      return balance;
+    },
+  };
 }
 
 const myAccount = bankAccount(1000);
-myAccount.deposit(500);    // Deposited: $500. New Balance: $1500
-myAccount.withdraw(2000);  // Insufficient funds!
+myAccount.deposit(500); // Deposited: $500. New Balance: $1500
+myAccount.withdraw(2000); // Insufficient funds!
 console.log(myAccount.getBalance()); // 1500
 ```
 
@@ -110,9 +110,9 @@ Closures are perfect for creating reusable, parameterized functions.
 
 ```javascript
 function multiplier(factor) {
-    return function(number) {
-        return number * factor;
-    };
+  return function (number) {
+    return number * factor;
+  };
 }
 
 const double = multiplier(2);
@@ -132,12 +132,12 @@ Closures are frequently used in event handlers to maintain state.
 
 ```javascript
 function clickCounter() {
-    let count = 0;
+  let count = 0;
 
-    return function() {
-        count++;
-        console.log(`Button clicked ${count} times`);
-    };
+  return function () {
+    count++;
+    console.log(`Button clicked ${count} times`);
+  };
 }
 
 const button = document.getElementById("myButton");
@@ -154,9 +154,9 @@ Closures ensure that delayed functions retain the variables they need.
 
 ```javascript
 function delayedMessage(message, delay) {
-    setTimeout(function() {
-        console.log(message);
-    }, delay);
+  setTimeout(function () {
+    console.log(message);
+  }, delay);
 }
 
 delayedMessage("Hello after 2 seconds", 2000);
@@ -182,29 +182,29 @@ To mitigate these problems, ensure closures are used judiciously and unnecessary
 ### **Creating a Counter Module**
 
 ```javascript
-const counterModule = (function() {
-    let count = 0;
+const counterModule = (function () {
+  let count = 0;
 
-    return {
-        increment() {
-            count++;
-            console.log(`Count: ${count}`);
-        },
-        decrement() {
-            count--;
-            console.log(`Count: ${count}`);
-        },
-        reset() {
-            count = 0;
-            console.log("Counter reset");
-        },
-    };
+  return {
+    increment() {
+      count++;
+      console.log(`Count: ${count}`);
+    },
+    decrement() {
+      count--;
+      console.log(`Count: ${count}`);
+    },
+    reset() {
+      count = 0;
+      console.log("Counter reset");
+    },
+  };
 })();
 
 counterModule.increment(); // Count: 1
 counterModule.increment(); // Count: 2
 counterModule.decrement(); // Count: 1
-counterModule.reset();     // Counter reset
+counterModule.reset(); // Counter reset
 ```
 
 Here, the counter module uses a closure to encapsulate the `count` variable, exposing only the necessary methods.

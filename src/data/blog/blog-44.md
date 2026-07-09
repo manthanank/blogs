@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-12-09T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Building a Tic Tac Toe Game in Angular - A Beginner's Guide
 postSlug: building-a-tic-tac-toe-game-in-angular-a-beginners-guide
 featured: false
@@ -47,9 +47,7 @@ cd tic-tac-toe
   <h1>Tic Tac Toe</h1>
   <div class="board">
     @for (cell of board; track $index) {
-    <div class="cell" (click)="makeMove($index)">
-      {{ cell }}
-    </div>
+    <div class="cell" (click)="makeMove($index)">{{ cell }}</div>
     }
   </div>
   @if (winner) {
@@ -113,17 +111,17 @@ button {
 #### 5. Implement the Game Logic in `app.component.ts`
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   imports: [],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
 export class AppComponent {
-  board: string[] = Array(9).fill('');
-  currentPlayer: string = 'X';
+  board: string[] = Array(9).fill("");
+  currentPlayer: string = "X";
   winner: string | null = null;
 
   makeMove(index: number) {
@@ -132,7 +130,7 @@ export class AppComponent {
       if (this.checkWinner()) {
         this.winner = this.currentPlayer;
       } else {
-        this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+        this.currentPlayer = this.currentPlayer === "X" ? "O" : "X";
       }
     }
   }
@@ -149,7 +147,7 @@ export class AppComponent {
       [2, 4, 6],
     ];
 
-    return winningCombinations.some((combination) => {
+    return winningCombinations.some(combination => {
       const [a, b, c] = combination;
       return (
         this.board[a] &&
@@ -160,8 +158,8 @@ export class AppComponent {
   }
 
   resetGame() {
-    this.board = Array(9).fill('');
-    this.currentPlayer = 'X';
+    this.board = Array(9).fill("");
+    this.currentPlayer = "X";
     this.winner = null;
   }
 }

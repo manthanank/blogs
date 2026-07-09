@@ -18,9 +18,9 @@ When copying objects, it’s crucial to understand the difference between shallo
 **Shallow Copy:**
 
 ```javascript
-const original = { name: 'John', address: { city: 'New York' } };
+const original = { name: "John", address: { city: "New York" } };
 const copy = { ...original };
-copy.address.city = 'Los Angeles';
+copy.address.city = "Los Angeles";
 
 console.log(original.address.city); // Los Angeles
 ```
@@ -28,9 +28,9 @@ console.log(original.address.city); // Los Angeles
 **Deep Copy:**
 
 ```javascript
-const original = { name: 'John', address: { city: 'New York' } };
+const original = { name: "John", address: { city: "New York" } };
 const deepCopy = JSON.parse(JSON.stringify(original));
-deepCopy.address.city = 'Los Angeles';
+deepCopy.address.city = "Los Angeles";
 
 console.log(original.address.city); // New York
 ```
@@ -40,11 +40,11 @@ console.log(original.address.city); // New York
 Object destructuring allows you to unpack properties from objects into variables easily.
 
 ```javascript
-const user = { name: 'Alice', age: 30, city: 'Paris' };
+const user = { name: "Alice", age: 30, city: "Paris" };
 const { name, age } = user;
 
 console.log(name); // Alice
-console.log(age);  // 30
+console.log(age); // 30
 ```
 
 #### 3. **Dynamic Property Names**
@@ -52,9 +52,9 @@ console.log(age);  // 30
 You can define object properties dynamically using computed property names.
 
 ```javascript
-const propName = 'dynamicKey';
+const propName = "dynamicKey";
 const obj = {
-  [propName]: 'Value'
+  [propName]: "Value",
 };
 
 console.log(obj.dynamicKey); // Value
@@ -80,7 +80,7 @@ console.log(merged); // { a: 1, b: 3, c: 4 }
 const obj = { a: 1, b: 2, c: 3 };
 
 const entries = Object.entries(obj); // [['a', 1], ['b', 2], ['c', 3]]
-const values = Object.values(obj);   // [1, 2, 3]
+const values = Object.values(obj); // [1, 2, 3]
 ```
 
 #### 6. **Checking for Properties**
@@ -88,10 +88,10 @@ const values = Object.values(obj);   // [1, 2, 3]
 You can check if an object has a property using `in` or `hasOwnProperty()`.
 
 ```javascript
-const obj = { name: 'Eve', age: 25 };
+const obj = { name: "Eve", age: 25 };
 
-console.log('name' in obj);            // true
-console.log(obj.hasOwnProperty('age')); // true
+console.log("name" in obj); // true
+console.log(obj.hasOwnProperty("age")); // true
 ```
 
 #### 7. **Freezing Objects**
@@ -99,10 +99,10 @@ console.log(obj.hasOwnProperty('age')); // true
 To prevent an object from being modified, you can use `Object.freeze()`.
 
 ```javascript
-const obj = { name: 'Tom' };
+const obj = { name: "Tom" };
 Object.freeze(obj);
 
-obj.name = 'Jerry'; // Won't change the name
+obj.name = "Jerry"; // Won't change the name
 console.log(obj.name); // Tom
 ```
 
@@ -111,7 +111,11 @@ console.log(obj.name); // Tom
 Using `Object.create()` allows you to create objects with a specific prototype, which can be helpful for inheritance.
 
 ```javascript
-const proto = { greet() { console.log('Hello'); } };
+const proto = {
+  greet() {
+    console.log("Hello");
+  },
+};
 const obj = Object.create(proto);
 
 obj.greet(); // Hello
@@ -135,7 +139,7 @@ These two operators can simplify your code when working with objects that might 
 **Optional Chaining:**
 
 ```javascript
-const user = { profile: { name: 'Jane' } };
+const user = { profile: { name: "Jane" } };
 console.log(user.profile?.name); // Jane
 console.log(user.account?.email); // undefined
 ```
@@ -144,7 +148,7 @@ console.log(user.account?.email); // undefined
 
 ```javascript
 const user = { name: null };
-console.log(user.name ?? 'Default Name'); // Default Name
+console.log(user.name ?? "Default Name"); // Default Name
 ```
 
 ### Conclusion

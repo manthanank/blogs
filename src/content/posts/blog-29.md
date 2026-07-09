@@ -113,19 +113,13 @@ Your `package.json` should look something like this:
     "typescript": "^5.1.3"
   },
   "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
+    "moduleFileExtensions": ["js", "json", "ts"],
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
+    "collectCoverageFrom": ["**/*.(t|j)s"],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }
@@ -144,19 +138,19 @@ MONGODB_PASSWORD = "yourMongoPassword"
 Then, in `app.module.ts`, you can connect to MongoDB using `MongooseModule`:
 
 ```typescript
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { MongooseModule } from '@nestjs/mongoose';
-import { UsersModule } from './users/users.module';
-import { ConfigModule } from '@nestjs/config';
+import { Module } from "@nestjs/common";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { MongooseModule } from "@nestjs/mongoose";
+import { UsersModule } from "./users/users.module";
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
   imports: [
     UsersModule,
     ConfigModule.forRoot(),
     MongooseModule.forRoot(
-      `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.re3ha3x.mongodb.net/nestjs-crud-app`,
+      `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.re3ha3x.mongodb.net/nestjs-crud-app`
     ),
   ],
   controllers: [AppController],
@@ -170,7 +164,7 @@ export class AppModule {}
 A user entity in MongoDB is represented by a schema. Here’s the `UserSchema` defined in `users.model.ts`:
 
 ```typescript
-import * as mongoose from 'mongoose';
+import * as mongoose from "mongoose";
 
 export const UserSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
@@ -197,55 +191,55 @@ import {
   Param,
   Patch,
   Delete,
-} from '@nestjs/common';
+} from "@nestjs/common";
 
-import { UsersService } from './users.service';
+import { UsersService } from "./users.service";
 
-@Controller('users')
+@Controller("users")
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
   async addUser(
-    @Body('firstName') userFirstName: string,
-    @Body('lastName') userLastName: string,
+    @Body("firstName") userFirstName: string,
+    @Body("lastName") userLastName: string
   ) {
     const generatedId = await this.usersService.insertUser(
       userFirstName,
-      userLastName,
+      userLastName
     );
-    return { message: 'User added successfully', id: generatedId };
+    return { message: "User added successfully", id: generatedId };
   }
 
   @Get()
   async getAllUsers() {
     const users = await this.usersService.getUsers();
-    return { message: 'All users retrieved successfully', users };
+    return { message: "All users retrieved successfully", users };
   }
 
-  @Get(':id')
-  getUser(@Param('id') userId: string) {
+  @Get(":id")
+  getUser(@Param("id") userId: string) {
     return this.usersService.getSingleUser(userId);
   }
 
-  @Patch(':id')
+  @Patch(":id")
   async updateUser(
-    @Param('id') userId: string,
-    @Body('firstName') userFirstName: string,
-    @Body('lastName') userLastName: string,
+    @Param("id") userId: string,
+    @Body("firstName") userFirstName: string,
+    @Body("lastName") userLastName: string
   ) {
     const updatedUser = await this.usersService.updateUser(
       userId,
       userFirstName,
-      userLastName,
+      userLastName
     );
-    return { message: 'User updated successfully', updatedUser };
+    return { message: "User updated successfully", updatedUser };
   }
 
-  @Delete(':id')
-  async removeUser(@Param('id') userId: string) {
+  @Delete(":id")
+  async removeUser(@Param("id") userId: string) {
     await this.usersService.deleteUser(userId);
-    return { message: 'User deleted successfully' };
+    return { message: "User deleted successfully" };
   }
 }
 ```
@@ -255,15 +249,15 @@ export class UsersController {
 The service handles the business logic, interacting with the database. Below is an example from `users.service.ts`:
 
 ```typescript
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
 
-import { User } from './users.model';
+import { User } from "./users.model";
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
+  constructor(@InjectModel("User") private readonly userModel: Model<User>) {}
 
   async insertUser(firstName: string, lastName: string) {
     const newUser = new this.userModel({
@@ -276,7 +270,7 @@ export class UsersService {
 
   async getUsers() {
     const users = await this.userModel.find().exec();
-    return users.map((user) => ({
+    return users.map(user => ({
       id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
@@ -307,7 +301,7 @@ export class UsersService {
   async deleteUser(userId: string) {
     const result = await this.userModel.deleteOne({ _id: userId }).exec();
     if (result.deletedCount === 0) {
-      throw new NotFoundException('Could not find user.');
+      throw new NotFoundException("Could not find user.");
     }
   }
 
@@ -316,10 +310,10 @@ export class UsersService {
     try {
       user = await this.userModel.findById(id).exec();
     } catch (error) {
-      throw new NotFoundException('Could not find user.');
+      throw new NotFoundException("Could not find user.");
     }
     if (!user) {
-      throw new NotFoundException('Could not find user.');
+      throw new NotFoundException("Could not find user.");
     }
     return user;
   }
@@ -331,15 +325,15 @@ export class UsersService {
 The `UsersModule` is a feature module that encapsulates the user-related components. Here’s an example from `users.module.ts`:
 
 ```typescript
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
+import { Module } from "@nestjs/common";
+import { MongooseModule } from "@nestjs/mongoose";
 
-import { UsersController } from './users.controller';
-import { UsersService } from './users.service';
-import { UserSchema } from './users.model';
+import { UsersController } from "./users.controller";
+import { UsersService } from "./users.service";
+import { UserSchema } from "./users.model";
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }])],
+  imports: [MongooseModule.forFeature([{ name: "User", schema: UserSchema }])],
   controllers: [UsersController],
   providers: [UsersService],
 })
@@ -351,8 +345,8 @@ export class UsersModule {}
 The `AppController` is the main controller that handles the root route. Here’s an example from `app.controller.ts`:
 
 ```typescript
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get } from "@nestjs/common";
+import { AppService } from "./app.service";
 
 @Controller()
 export class AppController {
@@ -370,12 +364,12 @@ export class AppController {
 The `AppService` is the main service that returns a message when the API is running. Here’s an example from `app.service.ts`:
 
 ```typescript
-import { Injectable } from '@nestjs/common';
+import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'API is running!';
+    return "API is running!";
   }
 }
 ```
@@ -385,8 +379,8 @@ export class AppService {
 The main file, `main.ts`, is the entry point for the application. Here’s an example:
 
 ```typescript
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { NestFactory } from "@nestjs/core";
+import { AppModule } from "./app.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

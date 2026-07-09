@@ -14,32 +14,32 @@ ogImage: ""
 description: "Learn how to build an AI-powered image generator using Node.js and Google's Gemini API. This guide covers API setup, image generation, and project structure."
 ---
 
-## **Introduction**  
+## **Introduction**
 
-AI-powered image generation has taken creative applications to new heights, allowing users to generate stunning visuals from simple text prompts. In this blog, we will explore how I built a **Gemini Image Generator**, a Node.js application that leverages **Google’s Generative AI (Gemini API)** to create images based on user input.  
+AI-powered image generation has taken creative applications to new heights, allowing users to generate stunning visuals from simple text prompts. In this blog, we will explore how I built a **Gemini Image Generator**, a Node.js application that leverages **Google’s Generative AI (Gemini API)** to create images based on user input.
 
-## **Project Overview**  
+## **Project Overview**
 
-The **Gemini Image Generator** is a lightweight REST API that allows users to send text prompts and receive AI-generated images. It is built using **Node.js, Express, and Google’s Generative AI SDK**.  
+The **Gemini Image Generator** is a lightweight REST API that allows users to send text prompts and receive AI-generated images. It is built using **Node.js, Express, and Google’s Generative AI SDK**.
 
 ### **Key Features:**
 
 ✅ Accepts user text prompts to generate images.  
 ✅ Uses **Google Gemini API** for AI-based image generation.  
 ✅ Saves generated images on the server.  
-✅ REST API endpoints for easy integration with other applications.  
+✅ REST API endpoints for easy integration with other applications.
 
-## **Tech Stack**  
+## **Tech Stack**
 
-The project is built with:  
+The project is built with:
 
-- **Node.js** - Backend runtime.  
-- **Express.js** - Lightweight web framework.  
-- **Google Generative AI SDK** - AI-powered image generation.  
-- **dotenv** - Environment variable management.  
-- **cors** - Cross-origin support.  
+- **Node.js** - Backend runtime.
+- **Express.js** - Lightweight web framework.
+- **Google Generative AI SDK** - AI-powered image generation.
+- **dotenv** - Environment variable management.
+- **cors** - Cross-origin support.
 
-## **Getting Started**  
+## **Getting Started**
 
 ### **1. Clone the Repository**
 
@@ -56,7 +56,7 @@ npm install
 
 ### **3. Configure Environment Variables**
 
-Create a `.env` file in the root directory and add:  
+Create a `.env` file in the root directory and add:
 
 ```env
 GEMINI_API_KEY=your_google_gemini_api_key
@@ -69,11 +69,11 @@ PORT=5000
 npm start
 ```
 
-Your server will run at <http://localhost:5000> 🚀  
+Your server will run at <http://localhost:5000> 🚀
 
 ---
 
-## **API Endpoints**  
+## **API Endpoints**
 
 ### **Generate an Image**
 
@@ -93,9 +93,9 @@ Your server will run at <http://localhost:5000> 🚀
   "message": "Image generated successfully",
   "imagePath": "temp/generated_image.png"
 }
-```  
+```
 
-## **Project Structure**  
+## **Project Structure**
 
 ```plaintext
 gemini-image-generator/
@@ -108,7 +108,7 @@ gemini-image-generator/
 └── .env               # Environment variables
 ```
 
-## **Core Implementation**  
+## **Core Implementation**
 
 ### **1. Setting Up the Express Server**
 
@@ -139,7 +139,9 @@ async function generateImageController(req, res) {
 
   try {
     const imagePath = await generateImage(prompt);
-    res.status(200).json({ message: "Image generated successfully", imagePath });
+    res
+      .status(200)
+      .json({ message: "Image generated successfully", imagePath });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -163,7 +165,7 @@ const genAI = new GoogleGenerativeAI(geminiApiKey);
 async function generateImage(prompt) {
   const model = genAI.getGenerativeModel({
     model: "gemini-2.0-flash-exp-image-generation",
-    generationConfig: { responseModalities: ['Text', 'Image'] }
+    generationConfig: { responseModalities: ["Text", "Image"] },
   });
 
   try {
@@ -171,8 +173,8 @@ async function generateImage(prompt) {
     for (const part of response.response.candidates[0].content.parts) {
       if (part.inlineData) {
         const imageData = part.inlineData.data;
-        const buffer = Buffer.from(imageData, 'base64');
-        const filePath = path.join(__dirname, '../temp/generated_image.png');
+        const buffer = Buffer.from(imageData, "base64");
+        const filePath = path.join(__dirname, "../temp/generated_image.png");
         fs.writeFileSync(filePath, buffer);
         return filePath;
       }
@@ -188,10 +190,10 @@ module.exports = { generateImage };
 
 ---
 
-## **Conclusion**  
+## **Conclusion**
 
-By integrating **Google’s Gemini API** with **Node.js**, we’ve built an AI-powered **image generation API** that can transform text into creative visuals. This project can be expanded to support **image style selection, real-time previews, and cloud storage integration**.  
+By integrating **Google’s Gemini API** with **Node.js**, we’ve built an AI-powered **image generation API** that can transform text into creative visuals. This project can be expanded to support **image style selection, real-time previews, and cloud storage integration**.
 
-If you found this useful, ⭐ **star the repo** and feel free to contribute! 🚀  
+If you found this useful, ⭐ **star the repo** and feel free to contribute! 🚀
 
-👉 [GitHub Repository](https://github.com/manthanank/gemini-image-generator)  
+👉 [GitHub Repository](https://github.com/manthanank/gemini-image-generator)

@@ -95,7 +95,7 @@ Deno and Oak allow you to set up middleware, which is useful for tasks like logg
     } catch (err) {
       console.error(err);
       ctx.response.status = 500;
-      ctx.response.body = { message: 'Internal Server Error' };
+      ctx.response.body = { message: "Internal Server Error" };
     }
   });
   ```
@@ -107,15 +107,15 @@ We define several RESTful routes for handling CRUD operations on todos.
 - **Root Route**: Simple welcome message.
 
   ```ts
-  router.get('/', (ctx) => {
-    ctx.response.body = 'Welcome to the API!';
+  router.get("/", ctx => {
+    ctx.response.body = "Welcome to the API!";
   });
   ```
 
 - **Get All Todos**: Fetch all the todos.
 
   ```ts
-  router.get("/todos", (ctx) => {
+  router.get("/todos", ctx => {
     ctx.response.body = { todos: todos };
   });
   ```
@@ -123,13 +123,13 @@ We define several RESTful routes for handling CRUD operations on todos.
 - **Create a Todo**: Add a new todo item. The new todo's `id` is generated using the current timestamp.
 
   ```ts
-  router.post("/todos", async (ctx) => {
+  router.post("/todos", async ctx => {
     const data = await ctx.request.body.json();
     const newTodo: Todo = {
       id: new Date().toISOString(),
       task: data.task,
     };
-  
+
     todos.push(newTodo);
     ctx.response.body = { message: "Created todo!", todo: newTodo };
   });
@@ -138,11 +138,11 @@ We define several RESTful routes for handling CRUD operations on todos.
 - **Update a Todo**: Modify an existing todo by its `id`.
 
   ```ts
-  router.put("/todos/:todoId", async (ctx) => {
+  router.put("/todos/:todoId", async ctx => {
     const tid = ctx.params.todoId;
     const data = await ctx.request.body.json();
-    const todoIndex = todos.findIndex((todo) => todo.id === tid);
-  
+    const todoIndex = todos.findIndex(todo => todo.id === tid);
+
     if (todoIndex !== -1) {
       todos[todoIndex] = { id: todos[todoIndex].id, task: data.task };
       ctx.response.body = { message: "Updated todo" };
@@ -156,11 +156,11 @@ We define several RESTful routes for handling CRUD operations on todos.
 - **Delete a Todo**: Remove a todo by its `id`.
 
   ```ts
-  router.delete("/todos/:todoId", (ctx) => {
+  router.delete("/todos/:todoId", ctx => {
     const tid = ctx.params.todoId;
     const initialLength = todos.length;
-    todos = todos.filter((todo) => todo.id !== tid);
-  
+    todos = todos.filter(todo => todo.id !== tid);
+
     if (todos.length < initialLength) {
       ctx.response.body = { message: "Deleted todo" };
     } else {
@@ -182,7 +182,7 @@ app.use(router.allowedMethods());
 Finally, we start the server on port `3000`:
 
 ```ts
-console.log('API is running on http://localhost:3000');
+console.log("API is running on http://localhost:3000");
 await app.listen({ port: 3000 });
 ```
 

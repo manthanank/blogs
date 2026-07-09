@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-11-21T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Exploring Enum Alternatives in TypeScript and Angular
 postSlug: exploring-enum-alternatives-in-typescript-and-angular
 featured: false
@@ -24,10 +24,10 @@ In this blog, we’ll explore a variety of ways to represent constants in TypeSc
 Union types are one of the simplest and most flexible alternatives to enums in TypeScript. They allow you to define a set of possible values directly within a type definition. This approach works especially well for small sets of values, such as status flags or user roles.
 
 ```typescript
-type Status = 'Active' | 'Inactive' | 'Pending';
+type Status = "Active" | "Inactive" | "Pending";
 
-let userStatus: Status = 'Active'; // Valid
-userStatus = 'Inactive'; // Also valid
+let userStatus: Status = "Active"; // Valid
+userStatus = "Inactive"; // Also valid
 // userStatus = 'Unknown'; // Error: Type '"Unknown"' is not assignable to type 'Status'
 ```
 
@@ -51,12 +51,12 @@ Constant objects allow you to define a set of named constants without using enum
 
 ```typescript
 const Status = {
-  Active: 'Active',
-  Inactive: 'Inactive',
-  Pending: 'Pending'
+  Active: "Active",
+  Inactive: "Inactive",
+  Pending: "Pending",
 } as const;
 
-type StatusType = typeof Status[keyof typeof Status];
+type StatusType = (typeof Status)[keyof typeof Status];
 
 let userStatus: StatusType = Status.Active;
 ```
@@ -81,10 +81,10 @@ Literal types can also be used within interfaces, which is helpful if you want t
 
 ```typescript
 interface UserStatus {
-  status: 'Active' | 'Inactive' | 'Pending';
+  status: "Active" | "Inactive" | "Pending";
 }
 
-let user: UserStatus = { status: 'Active' };
+let user: UserStatus = { status: "Active" };
 ```
 
 Using literal types within an interface is beneficial when you want to constrain a property but still use it within a structured object.
@@ -107,12 +107,13 @@ TypeScript’s namespaces offer another approach to organize constants. Using na
 
 ```typescript
 namespace Status {
-  export const Active = 'Active';
-  export const Inactive = 'Inactive';
-  export const Pending = 'Pending';
+  export const Active = "Active";
+  export const Inactive = "Inactive";
+  export const Pending = "Pending";
 }
 
-type StatusType = typeof Status.Active | typeof Status.Inactive | typeof Status.Pending;
+type StatusType =
+  typeof Status.Active | typeof Status.Inactive | typeof Status.Pending;
 
 let userStatus: StatusType = Status.Active;
 ```
@@ -137,9 +138,9 @@ If you prefer an object-oriented approach, classes with static properties can of
 
 ```typescript
 class Status {
-  static readonly Active = 'Active';
-  static readonly Inactive = 'Inactive';
-  static readonly Pending = 'Pending';
+  static readonly Active = "Active";
+  static readonly Inactive = "Inactive";
+  static readonly Pending = "Pending";
 }
 
 let userStatus: string = Status.Active;
@@ -165,14 +166,14 @@ Mapped types are an advanced feature of TypeScript that can dynamically generate
 
 ```typescript
 const StatusValues = {
-  Active: 'Active',
-  Inactive: 'Inactive',
-  Pending: 'Pending'
+  Active: "Active",
+  Inactive: "Inactive",
+  Pending: "Pending",
 } as const;
 
 type StatusType = keyof typeof StatusValues;
 
-let userStatus: StatusType = 'Active';
+let userStatus: StatusType = "Active";
 ```
 
 In this example, `StatusType` is created dynamically based on the keys of `StatusValues`. This approach can be helpful when the set of constants is derived from another source or needs to adapt based on the keys.

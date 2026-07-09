@@ -50,10 +50,10 @@ The `NgIf` directive conditionally adds or removes an element from the DOM. Here
 **Directive Code:**
 
 ```typescript
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef } from "@angular/core";
 
 @Directive({
-  selector: '[appCustomIf]',
+  selector: "[appCustomIf]",
   standalone: true,
 })
 export class CustomIfDirective {
@@ -75,7 +75,9 @@ export class CustomIfDirective {
 With this directive, you can now conditionally render elements in your template like this:
 
 ```html
-<p *appCustomIf="isVisible">This is conditionally visible based on isVisible.</p>
+<p *appCustomIf="isVisible">
+  This is conditionally visible based on isVisible.
+</p>
 <button (click)="toggleVisibility()">Toggle Visibility</button>
 ```
 
@@ -86,10 +88,10 @@ The `NgFor` directive is used to loop through a collection and render templates 
 **Directive Code:**
 
 ```typescript
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef } from "@angular/core";
 
 @Directive({
-  selector: '[appCustomFor]',
+  selector: "[appCustomFor]",
   standalone: true,
 })
 export class CustomForDirective {
@@ -114,7 +116,9 @@ In your template, you can use it like so:
 
 ```html
 <ul>
-  <li *appCustomFor="let item of items; index as i">Index: {{ i }} - Item: {{ item }}</li>
+  <li *appCustomFor="let item of items; index as i">
+    Index: {{ i }} - Item: {{ item }}
+  </li>
 </ul>
 ```
 
@@ -125,10 +129,10 @@ The `NgSwitch` directive allows conditional rendering based on matching values. 
 **Directive Code:**
 
 ```typescript
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef } from "@angular/core";
 
 @Directive({
-  selector: '[appCustomSwitch]',
+  selector: "[appCustomSwitch]",
   standalone: true,
 })
 export class CustomSwitchDirective {
@@ -150,7 +154,7 @@ export class CustomSwitchDirective {
 }
 
 @Directive({
-  selector: '[appCustomSwitchCase]',
+  selector: "[appCustomSwitchCase]",
   standalone: true,
 })
 export class CustomSwitchCaseDirective {
@@ -182,10 +186,10 @@ The `NgClass` directive dynamically adds or removes classes based on conditions.
 **Directive Code:**
 
 ```typescript
-import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Input, Renderer2 } from "@angular/core";
 
 @Directive({
-  selector: '[appCustomClass]',
+  selector: "[appCustomClass]",
   standalone: true,
 })
 export class CustomClassDirective {
@@ -199,7 +203,10 @@ export class CustomClassDirective {
     }
   }
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2
+  ) {}
 }
 ```
 
@@ -219,10 +226,10 @@ The `NgStyle` directive dynamically applies inline styles to elements. Here’s 
 **Directive Code:**
 
 ```typescript
-import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Input, Renderer2 } from "@angular/core";
 
 @Directive({
-  selector: '[appCustomStyle]',
+  selector: "[appCustomStyle]",
   standalone: true,
 })
 export class CustomStyleDirective {
@@ -232,7 +239,10 @@ export class CustomStyleDirective {
     }
   }
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2
+  ) {}
 }
 ```
 
@@ -259,10 +269,10 @@ import {
   HostListener,
   Input,
   Output,
-} from '@angular/core';
+} from "@angular/core";
 
 @Directive({
-  selector: '[appCustomModel]',
+  selector: "[appCustomModel]",
   standalone: true,
 })
 export class CustomModelDirective {
@@ -271,7 +281,7 @@ export class CustomModelDirective {
 
   constructor(private el: ElementRef) {}
 
-  @HostListener('input', ['$event.target.value'])
+  @HostListener("input", ["$event.target.value"])
   onInputChange(value: any) {
     this.appCustomModelChange.emit(value);
   }
@@ -285,7 +295,10 @@ export class CustomModelDirective {
 Usage:
 
 ```html
-<input [appCustomModel]="userInput" (appCustomModelChange)="userInput = $event">
+<input
+  [appCustomModel]="userInput"
+  (appCustomModelChange)="userInput = $event"
+/>
 <p>User input: {{ userInput }}</p>
 ```
 
@@ -296,20 +309,20 @@ Once you’ve created all these directives, you can use them in your Angular app
 For example, in `app.component.ts`:
 
 ```typescript
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CustomClassDirective } from './directives/custom-class.directive';
-import { CustomForDirective } from './directives/custom-for.directive';
-import { CustomIfDirective } from './directives/custom-if.directive';
-import { CustomModelDirective } from './directives/custom-model.directive';
-import { CustomStyleDirective } from './directives/custom-style.directive';
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { CustomClassDirective } from "./directives/custom-class.directive";
+import { CustomForDirective } from "./directives/custom-for.directive";
+import { CustomIfDirective } from "./directives/custom-if.directive";
+import { CustomModelDirective } from "./directives/custom-model.directive";
+import { CustomStyleDirective } from "./directives/custom-style.directive";
 import {
   CustomSwitchCaseDirective,
   CustomSwitchDirective,
-} from './directives/custom-switch.directive';
+} from "./directives/custom-switch.directive";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
   imports: [
     RouterOutlet,
@@ -321,24 +334,24 @@ import {
     CustomStyleDirective,
     CustomModelDirective,
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.css",
 })
 export class AppComponent {
   isVisible = true;
-  items = ['Item 1', 'Item 2', 'Item 3'];
-  currentView = 'view1';
+  items = ["Item 1", "Item 2", "Item 3"];
+  currentView = "view1";
   isActive = true;
-  textColor = 'blue';
-  fontSize = '20px';
-  userInput = 'Type something...';
+  textColor = "blue";
+  fontSize = "20px";
+  userInput = "Type something...";
 
   toggleVisibility() {
     this.isVisible = !this.isVisible;
   }
 
   toggleView() {
-    this.currentView = this.currentView === 'view1' ? 'view2' : 'view1';
+    this.currentView = this.currentView === "view1" ? "view2" : "view1";
   }
 
   toggleClass() {
@@ -346,8 +359,8 @@ export class AppComponent {
   }
 
   changeStyle() {
-    this.textColor = this.textColor === 'blue' ? 'red' : 'blue';
-    this.fontSize = this.fontSize === '20px' ? '25px' : '20px';
+    this.textColor = this.textColor === "blue" ? "red" : "blue";
+    this.fontSize = this.fontSize === "20px" ? "25px" : "20px";
   }
 }
 ```

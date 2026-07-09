@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2025-01-28T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Setting Up Tailwind CSS 4.0 in Angular v19.1 - A Step-by-Step Guide
 postSlug: setting-up-tailwind-css-4-in-angular-v19-1-a-step-by-step-guide
 featured: false
@@ -89,7 +89,7 @@ Your Angular project is now running with Tailwind CSS integrated. Open your brow
 You’re all set to use Tailwind’s utility-first classes to style your application. For example, let’s style a simple heading element with Tailwind’s utilities:
 
 ```html
-<h1 class="text-3xl font-bold underline text-center mt-10">
+<h1 class="mt-10 text-center text-3xl font-bold underline">
   Angular v19.1 + Tailwind CSS 4.0
 </h1>
 ```

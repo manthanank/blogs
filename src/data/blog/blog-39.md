@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-11-19T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Understanding Enums in Angular - A Guide to Organized Constants
 postSlug: understanding-enums-in-angular-a-guide-to-organized-constants
 featured: false
@@ -31,7 +31,7 @@ A numeric enum uses numbers as its values and will automatically increment each 
 export enum Role {
   Admin = 1,
   User,
-  Guest
+  Guest,
 }
 ```
 
@@ -46,9 +46,9 @@ String enums allow you to assign string values to each constant, making the code
 
 ```typescript
 export enum Status {
-  Active = 'Active',
-  Inactive = 'Inactive',
-  Pending = 'Pending'
+  Active = "Active",
+  Inactive = "Inactive",
+  Pending = "Pending",
 }
 ```
 
@@ -63,11 +63,11 @@ Once defined, you can use enums within your Angular components, services, or mod
 To use an enum, import it into your component, then define a property that utilizes it:
 
 ```typescript
-import { Status, Role } from './path/to/enum';
+import { Status, Role } from "./path/to/enum";
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html'
+  selector: "app-user",
+  templateUrl: "./user.component.html",
 })
 export class UserComponent {
   userStatus: Status = Status.Active; // Set a default value
@@ -92,11 +92,11 @@ Enums are also useful in Angular templates, but because templates don’t direct
 To access enums in the template, make the enum available as a public property of the component:
 
 ```typescript
-import { Status } from './path/to/enum';
+import { Status } from "./path/to/enum";
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html'
+  selector: "app-user",
+  templateUrl: "./user.component.html",
 })
 export class UserComponent {
   Status = Status; // Expose the enum to the template

@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2025-02-21T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Understanding Version Control with ~ and ^ in package.json
 postSlug: understanding-version-control-with-tilde-and-caret-in-package-json
 featured: false
@@ -32,7 +32,7 @@ The `~` operator is used to specify that only **patch updates** (bug fixes) are 
 
 - `4.17.15`
 - `4.17.16`
-- `4.17.17`  
+- `4.17.17`
 
 #### **Not Allowed for `~`**
 
@@ -57,7 +57,7 @@ The `^` operator allows for both **minor updates** (new features) and **patch up
 
 - `0.21.1`
 - `0.22.0`
-- `0.23.4`  
+- `0.23.4`
 
 #### **Not Allowed for `^`**
 
@@ -68,7 +68,7 @@ The caret is more flexible and ensures your project benefits from improvements a
 ### **Key Differences Between `~` and `^`**
 
 | Symbol | Major Updates Allowed? | Minor Updates Allowed? | Patch Updates Allowed? |
-|--------|-------------------------|-------------------------|-------------------------|
+| ------ | ---------------------- | ---------------------- | ---------------------- |
 | `~`    | No                     | No                     | Yes                    |
 | `^`    | No                     | Yes                    | Yes                    |
 

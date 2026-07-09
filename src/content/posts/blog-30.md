@@ -51,14 +51,14 @@ src/
 Next, we'll configure Formly in our Angular application. Open `src/app/app.module.ts` and add the necessary imports and configuration:
 
 ```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { ReactiveFormsModule } from "@angular/forms";
+import { FormlyModule } from "@ngx-formly/core";
+import { FormlyBootstrapModule } from "@ngx-formly/bootstrap";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
 
 @NgModule({
   declarations: [AppComponent],
@@ -80,26 +80,26 @@ export class AppModule {}
 Now, let's create our form component. Open `src/app/app.component.ts` and define the form structure:
 
 ```typescript
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { Component } from "@angular/core";
+import { FormGroup } from "@angular/forms";
+import { FormlyFieldConfig } from "@ngx-formly/core";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
 export class AppComponent {
-  title = 'Formly Example';
+  title = "Formly Example";
   form = new FormGroup({});
-  model = { email: 'email@gmail.com' };
+  model = { email: "email@gmail.com" };
   fields: FormlyFieldConfig[] = [
     {
-      key: 'email',
-      type: 'input',
+      key: "email",
+      type: "input",
       props: {
-        label: 'Email address',
-        placeholder: 'Enter email',
+        label: "Email address",
+        placeholder: "Enter email",
         required: true,
       },
     },

@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2025-01-28T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Containerizing a Node.js Application with Docker
 postSlug: containerizing-a-node-js-application-with-docker
 featured: false
@@ -59,22 +59,22 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
 
-    ```bash
-    git clone https://github.com/manthanank/nodejs-docker.git
-    cd nodejs-docker
-    ```
+   ```bash
+   git clone https://github.com/manthanank/nodejs-docker.git
+   cd nodejs-docker
+   ```
 
 2. Install dependencies:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 3. Start the server:
 
-    ```bash
-    npm start
-    ```
+   ```bash
+   npm start
+   ```
 
 ## Docker Configuration
 
@@ -112,15 +112,15 @@ Building and Running the Docker Image
 
 1. Build the Docker image:
 
-    ```bash
-    docker build -t nodejs-docker .
-    ```
+   ```bash
+   docker build -t nodejs-docker .
+   ```
 
 2. Run the Docker container:
 
-    ```bash
-    docker run -d -p 3000:3000 nodejs-docker
-    ```
+   ```bash
+   docker run -d -p 3000:3000 nodejs-docker
+   ```
 
 3. Open the browser and navigate to `http://localhost:3000`.
 
@@ -129,7 +129,7 @@ Building and Running the Docker Image
 Docker Compose simplifies the process of managing multi-container applications. Our `docker-compose.yml` file defines the configuration for running the application:
 
 ```yml
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -147,9 +147,9 @@ services:
 
 1. Start the application using Docker Compose:
 
-    ```bash
-    docker-compose up -d
-    ```
+   ```bash
+   docker-compose up -d
+   ```
 
 2. Open the browser and navigate to `http://localhost:3000`.
 
@@ -173,25 +173,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    # - name: Run tests
-    #   run: npm test
+      # - name: Run tests
+      #   run: npm test
 
-    - name: Build Docker image
-      run: docker build -t nodejs-docker .
+      - name: Build Docker image
+        run: docker build -t nodejs-docker .
 
-    - name: Run Docker container
-      run: docker run -d -p 3000:3000 nodejs-docker
+      - name: Run Docker container
+        run: docker run -d -p 3000:3000 nodejs-docker
 ```
 
 ## Conclusion

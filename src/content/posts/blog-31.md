@@ -69,7 +69,7 @@ const connection = mysql.createConnection({
   database: process.env.DB_DATABASE,
 });
 
-connection.connect((error) => {
+connection.connect(error => {
   if (error) throw error;
   console.log("Successfully connected to the database.");
 });
@@ -102,7 +102,7 @@ User.create = (newUser, result) => {
 };
 
 // Get all Users
-User.getAll = (result) => {
+User.getAll = result => {
   db.query("SELECT * FROM users", (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -256,7 +256,7 @@ The `swagger.js` file sets up Swagger UI for API documentation:
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger/swagger.json");
 
-module.exports = (app) => {
+module.exports = app => {
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 };
 ```
@@ -303,17 +303,17 @@ To run the project, follow these steps:
 
 1. Install the dependencies:
 
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
 2. Create a `.env` file based on the `.env.example` file and fill in your database credentials.
 
 3. Start the server:
 
-    ```sh
-    npm start
-    ```
+   ```sh
+   npm start
+   ```
 
 4. Access the API documentation at `http://localhost:3000/api-docs`.
 

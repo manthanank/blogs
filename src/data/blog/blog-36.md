@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-10-22T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Building an Investment Calculator in Angular with Tailwind CSS
 postSlug: building-an-investment-calculator-in-angular-with-tailwind-css
 featured: false
@@ -44,14 +44,12 @@ Configure the `tailwind.config.js` file:
 
 ```js
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-  ],
+  content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
 Finally, add Tailwind directives to your `src/styles.css` file:
@@ -73,16 +71,16 @@ ng generate component investment-calculator
 Now, implement the logic in `investment-calculator.component.ts`:
 
 ```ts
-import { CurrencyPipe } from '@angular/common';
-import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CurrencyPipe } from "@angular/common";
+import { Component, signal } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'app-investment-calculator',
+  selector: "app-investment-calculator",
   standalone: true,
   imports: [FormsModule, CurrencyPipe],
-  templateUrl: './investment-calculator.component.html',
-  styleUrl: './investment-calculator.component.scss',
+  templateUrl: "./investment-calculator.component.html",
+  styleUrl: "./investment-calculator.component.scss",
 })
 export class InvestmentCalculatorComponent {
   initialInvestment = signal(0);
@@ -92,7 +90,9 @@ export class InvestmentCalculatorComponent {
 
   calculateInvestment() {
     const rate = this.annualRate() / 100;
-    this.futureValue.set(this.initialInvestment() * Math.pow(1 + rate, this.years()));
+    this.futureValue.set(
+      this.initialInvestment() * Math.pow(1 + rate, this.years())
+    );
   }
 }
 ```
@@ -103,33 +103,54 @@ In the template file, create a form for user input and display the calculated fu
 
 ```html
 <div class="container mx-auto mt-10">
-    <h1 class="text-2xl font-bold text-center mb-6">Investment Calculator</h1>
+  <h1 class="mb-6 text-center text-2xl font-bold">Investment Calculator</h1>
 
-    <form class="space-y-4" (ngSubmit)="calculateInvestment()">
-        <div>
-            <label class="block text-lg font-medium">Initial Investment (₹)</label>
-            <input type="number" [(ngModel)]="initialInvestment" class="input-field" required
-                name="initialInvestment" />
-        </div>
-
-        <div>
-            <label class="block text-lg font-medium">Annual Interest Rate (%)</label>
-            <input type="number" [(ngModel)]="annualRate" class="input-field" required name="annualRate" />
-        </div>
-
-        <div>
-            <label class="block text-lg font-medium">Years</label>
-            <input type="number" [(ngModel)]="years" class="input-field" required name="years" />
-        </div>
-
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Calculate</button>
-    </form>
-
-    @if (futureValue()) {
-    <div class="mt-6">
-        <h2 class="text-xl font-bold">Future Value: {{ futureValue() | currency: 'INR' }}</h2>
+  <form class="space-y-4" (ngSubmit)="calculateInvestment()">
+    <div>
+      <label class="block text-lg font-medium">Initial Investment (₹)</label>
+      <input
+        type="number"
+        [(ngModel)]="initialInvestment"
+        class="input-field"
+        required
+        name="initialInvestment"
+      />
     </div>
-    }
+
+    <div>
+      <label class="block text-lg font-medium">Annual Interest Rate (%)</label>
+      <input
+        type="number"
+        [(ngModel)]="annualRate"
+        class="input-field"
+        required
+        name="annualRate"
+      />
+    </div>
+
+    <div>
+      <label class="block text-lg font-medium">Years</label>
+      <input
+        type="number"
+        [(ngModel)]="years"
+        class="input-field"
+        required
+        name="years"
+      />
+    </div>
+
+    <button type="submit" class="rounded bg-blue-500 px-4 py-2 text-white">
+      Calculate
+    </button>
+  </form>
+
+  @if (futureValue()) {
+  <div class="mt-6">
+    <h2 class="text-xl font-bold">
+      Future Value: {{ futureValue() | currency: 'INR' }}
+    </h2>
+  </div>
+  }
 </div>
 ```
 
@@ -139,7 +160,7 @@ You can style the input fields and buttons using Tailwind CSS utility classes fo
 
 ```css
 .input-field {
-  @apply w-full border border-gray-300 rounded px-4 py-2 mt-2;
+  @apply mt-2 w-full rounded border border-gray-300 px-4 py-2;
 }
 ```
 

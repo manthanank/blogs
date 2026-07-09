@@ -14,29 +14,29 @@ ogImage: ""
 description: "Learn how to build an AI-powered image editor using Node.js and Google's Gemini API. This guide covers API setup, image editing, and project structure."
 ---
 
-## **Introduction**  
+## **Introduction**
 
-AI is transforming image editing by allowing users to enhance and modify images based on text prompts. In this blog, we’ll explore how I built the **Gemini Image Editor**, a **Node.js** application that leverages **Google’s Gemini API** to edit images with AI.  
+AI is transforming image editing by allowing users to enhance and modify images based on text prompts. In this blog, we’ll explore how I built the **Gemini Image Editor**, a **Node.js** application that leverages **Google’s Gemini API** to edit images with AI.
 
-This project allows users to upload an image, describe modifications, and receive an AI-enhanced version.  
+This project allows users to upload an image, describe modifications, and receive an AI-enhanced version.
 
-## **Project Overview**  
+## **Project Overview**
 
 The **Gemini Image Editor** is a REST API that supports:  
 ✅ **Uploading images** and applying modifications.  
 ✅ **Google Gemini API integration** for AI-powered editing.  
 ✅ **Multer file upload handling**.  
-✅ **Express.js backend** with easy-to-use API endpoints.  
+✅ **Express.js backend** with easy-to-use API endpoints.
 
-## **Tech Stack**  
+## **Tech Stack**
 
-- **Node.js** - Backend runtime  
-- **Express.js** - Web framework  
-- **Google Generative AI SDK** - Image modification  
-- **Multer** - File upload handling  
-- **dotenv** - Environment variables  
+- **Node.js** - Backend runtime
+- **Express.js** - Web framework
+- **Google Generative AI SDK** - Image modification
+- **Multer** - File upload handling
+- **dotenv** - Environment variables
 
-## **Getting Started**  
+## **Getting Started**
 
 ### **1. Clone the Repository**
 
@@ -53,7 +53,7 @@ npm install
 
 ### **3. Configure Environment Variables**
 
-Create a `.env` file and add your **Google Gemini API key**:  
+Create a `.env` file and add your **Google Gemini API key**:
 
 ```env
 GEMINI_API_KEY=your_google_gemini_api_key
@@ -66,11 +66,11 @@ PORT=5000
 npm start
 ```
 
-Your server will run at <http://localhost:5000> 🚀  
+Your server will run at <http://localhost:5000> 🚀
 
 ---
 
-## **API Endpoints**  
+## **API Endpoints**
 
 ### **Modify an Image**
 
@@ -78,7 +78,7 @@ Your server will run at <http://localhost:5000> 🚀
 📌 **Request Body:**
 
 - `prompt` (string): Modification instructions
-- `image` (file): The image to modify  
+- `image` (file): The image to modify
 
 📌 **Response:**
 
@@ -87,9 +87,9 @@ Your server will run at <http://localhost:5000> 🚀
   "message": "Image modified successfully",
   "imagePath": "uploads/modified_1710342456.png"
 }
-```  
+```
 
-## **Project Structure**  
+## **Project Structure**
 
 ```plaintext
 gemini-image-editor/
@@ -105,11 +105,11 @@ gemini-image-editor/
 
 ---
 
-## **Core Implementation**  
+## **Core Implementation**
 
 ### **1. Setting Up the Express Server**
 
-The `server.js` file initializes the app and ensures the `uploads/` directory exists:  
+The `server.js` file initializes the app and ensures the `uploads/` directory exists:
 
 ```js
 const app = require("./app");
@@ -143,7 +143,12 @@ async function modifyImageController(req, res) {
 
   try {
     const modifiedImagePath = await modifyImage(prompt, imageFile.path);
-    res.status(200).json({ message: "Image modified successfully", imagePath: modifiedImagePath });
+    res
+      .status(200)
+      .json({
+        message: "Image modified successfully",
+        imagePath: modifiedImagePath,
+      });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -228,13 +233,13 @@ module.exports = { modifyImage };
 
 ---
 
-## **Conclusion**  
+## **Conclusion**
 
-With **Node.js, Express, Multer, and Google Gemini API**, we’ve built an **AI-powered image editor** that allows users to **upload images, apply modifications using text prompts, and receive AI-enhanced versions**. 🚀  
+With **Node.js, Express, Multer, and Google Gemini API**, we’ve built an **AI-powered image editor** that allows users to **upload images, apply modifications using text prompts, and receive AI-enhanced versions**. 🚀
 
 🔹 **Potential Enhancements:**  
 🔹 Add a **frontend UI** with **Angular** for an interactive user experience.  
 🔹 Support **cloud storage** for better image management.  
-🔹 Allow multiple **modifications in one request**.  
+🔹 Allow multiple **modifications in one request**.
 
-**👉 Ready to explore AI-powered image editing? Try the [GitHub Repository](https://github.com/manthanank/gemini-image-editor)!**  
+**👉 Ready to explore AI-powered image editing? Try the [GitHub Repository](https://github.com/manthanank/gemini-image-editor)!**

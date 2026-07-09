@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2025-03-06T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Exploring Angular's linkedSignal for Reactive State Management
 postSlug: exploring-angular-linkedsignal
 featured: false
@@ -12,50 +12,50 @@ ogImage: ""
 description: "Discover Angular's linkedSignal for efficient state management. Learn how to create reactive signals that depend on other signals, enhancing your app's performance and maintainability."
 ---
 
-### **Introduction**  
+### **Introduction**
 
-With the latest advancements in **Angular 19**, **Signals** have become a powerful alternative to traditional state management approaches. Among these, **linkedSignal** provides a seamless way to derive state from other signals dynamically.  
+With the latest advancements in **Angular 19**, **Signals** have become a powerful alternative to traditional state management approaches. Among these, **linkedSignal** provides a seamless way to derive state from other signals dynamically.
 
-In this blog, we will explore **linkedSignal** and **computed properties** using an example from my **AngularExamples** project. We’ll create a simple **dynamic item list**, where users can **add, select, reset, and remove items**, all while leveraging **Angular Signals for reactivity**.  
+In this blog, we will explore **linkedSignal** and **computed properties** using an example from my **AngularExamples** project. We’ll create a simple **dynamic item list**, where users can **add, select, reset, and remove items**, all while leveraging **Angular Signals for reactivity**.
 
 ---
 
-## **🔹 What is linkedSignal?**  
+## **🔹 What is linkedSignal?**
 
-`linkedSignal` is a **reactive derived signal** that updates automatically based on changes to its source signal. It’s useful when you need to derive state from an existing signal without manually updating it.  
+`linkedSignal` is a **reactive derived signal** that updates automatically based on changes to its source signal. It’s useful when you need to derive state from an existing signal without manually updating it.
 
 ✅ **Automatically tracks changes** in the source signal  
 ✅ **Ensures reactive updates** when the source signal changes  
-✅ **Simplifies state management** with fewer manual updates  
+✅ **Simplifies state management** with fewer manual updates
 
 ---
 
-## **🔹 Implementing linkedSignal in an Angular App**  
+## **🔹 Implementing linkedSignal in an Angular App**
 
-Let's build a simple **Item List Manager** using **linkedSignal** and **computed properties**.  
+Let's build a simple **Item List Manager** using **linkedSignal** and **computed properties**.
 
-### **1️⃣ Define the Component with Signals**  
+### **1️⃣ Define the Component with Signals**
 
 ```typescript
-import { JsonPipe } from '@angular/common';
-import { Component, computed, linkedSignal, signal } from '@angular/core';
+import { JsonPipe } from "@angular/common";
+import { Component, computed, linkedSignal, signal } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   imports: [JsonPipe],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.css",
 })
 export class AppComponent {
-  title = 'angular-examples';
+  title = "angular-examples";
 
   // Signal to store the list of items
-  items = signal<string[]>(['Item 1', 'Item 2', 'Item 3']);
+  items = signal<string[]>(["Item 1", "Item 2", "Item 3"]);
 
   // linkedSignal: Automatically selects the first item from the list
   selectedItem = linkedSignal({
     source: this.items,
-    computation: (items) => items[0] || null,
+    computation: items => items[0] || null,
   });
 
   // Computed property to count the number of items
@@ -63,7 +63,7 @@ export class AppComponent {
 
   // Add a new item to the list
   addItem() {
-    this.items.update((currentItems) => [
+    this.items.update(currentItems => [
       ...currentItems,
       `Item ${currentItems.length + 1}`,
     ]);
@@ -78,27 +78,27 @@ export class AppComponent {
 
   // Reset items to a default list
   resetItems() {
-    this.items.set(['Apple', 'Banana', 'Cherry']);
+    this.items.set(["Apple", "Banana", "Cherry"]);
   }
 
   // Remove the selected item
   removeItem() {
     const selected = this.selectedItem();
     if (selected) {
-      this.items.update((currentItems) =>
-        currentItems.filter((item) => item !== selected)
+      this.items.update(currentItems =>
+        currentItems.filter(item => item !== selected)
       );
       this.selectedItem.set(this.items()[0] || null); // Reset selection
     }
   }
 }
-```  
+```
 
 ---
 
-## **🔹 Creating the UI for the Item List**  
+## **🔹 Creating the UI for the Item List**
 
-We will now build a simple UI to **display the item list** and **allow user interactions**.  
+We will now build a simple UI to **display the item list** and **allow user interactions**.
 
 ```html
 <div class="container">
@@ -126,13 +126,13 @@ We will now build a simple UI to **display the item list** and **allow user inte
     </ul>
   </div>
 </div>
-```  
+```
 
 ---
 
-## **🔹 Styling the UI**  
+## **🔹 Styling the UI**
 
-To make the UI visually appealing, we add some simple CSS styles.  
+To make the UI visually appealing, we add some simple CSS styles.
 
 ```css
 .container {
@@ -196,28 +196,28 @@ button:hover {
 .select-button:hover {
   background-color: #45a049;
 }
-```  
+```
 
 ---
 
-## **🔹 Why Use linkedSignal and computed?**  
+## **🔹 Why Use linkedSignal and computed?**
 
 ✅ **Automatic Updates:** When `items` change, `selectedItem` updates automatically.  
 ✅ **No Manual State Management:** No need for extra event listeners or manual subscriptions.  
-✅ **Reactive Performance Boost:** Computed properties optimize updates efficiently.  
+✅ **Reactive Performance Boost:** Computed properties optimize updates efficiently.
 
 ---
 
-## **🔹 Running the Project**  
+## **🔹 Running the Project**
 
-To test this in your **AngularExamples** project:  
+To test this in your **AngularExamples** project:
 
 1️⃣ **Clone the Repository:**
 
 ```bash
 git clone https://github.com/yourusername/angular-examples.git
 cd angular-examples
-```  
+```
 
 2️⃣ **Checkout to rxresource Branch:**
 
@@ -229,33 +229,33 @@ git checkout rxresource
 
 ```bash
 npm install
-```  
+```
 
 4️⃣ **Run the Development Server:**
 
 ```bash
 ng serve
-```  
+```
 
-Now, open your browser and go to `http://localhost:4200/`. 🎉  
+Now, open your browser and go to `http://localhost:4200/`. 🎉
 
 ---
 
-## **🔹 Conclusion**  
+## **🔹 Conclusion**
 
-The **linkedSignal API** provides a clean and efficient way to manage **derived state** in Angular applications. Combined with **computed properties**, it offers a **powerful reactive state management** solution.  
+The **linkedSignal API** provides a clean and efficient way to manage **derived state** in Angular applications. Combined with **computed properties**, it offers a **powerful reactive state management** solution.
 
 ### Exploring the Code
 
 Visit the [GitHub repository](https://github.com/manthanank/angular-examples/tree/linkedsignal) to explore the code in detail.
 
-### Live Demo  
+### Live Demo
 
-Check out the working example on [StackBlitz](https://stackblitz.com/edit/stackblitz-starters-s9d6dbpg)  
+Check out the working example on [StackBlitz](https://stackblitz.com/edit/stackblitz-starters-s9d6dbpg)
 
 ---
 
-## Additional Resources  
+## Additional Resources
 
 - [Angular LinkedSignal Documentation](https://angular.dev/guide/signals/linked-signal)
 - [Angular Signals Guide](https://angular.dev/guide/signals)

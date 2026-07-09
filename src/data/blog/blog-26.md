@@ -16,7 +16,7 @@ description: Learn essential JavaScript string tips and tricks to improve coding
 Template literals, introduced in ES6, provide a convenient way to work with multi-line strings and string interpolation.
 
 ```javascript
-const name = 'John';
+const name = "John";
 const greeting = `Hello, ${name}!
 Welcome to the world of JavaScript.`;
 console.log(greeting);
@@ -29,9 +29,9 @@ This approach eliminates the need for concatenation and makes your code more rea
 To align text or add leading/trailing characters, you can use the `padStart` and `padEnd` methods.
 
 ```javascript
-const str = '42';
-console.log(str.padStart(5, '0')); // Output: '00042'
-console.log(str.padEnd(5, '0'));   // Output: '42000'
+const str = "42";
+console.log(str.padStart(5, "0")); // Output: '00042'
+console.log(str.padEnd(5, "0")); // Output: '42000'
 ```
 
 These methods are especially useful for formatting numbers or aligning columns of text.
@@ -41,10 +41,10 @@ These methods are especially useful for formatting numbers or aligning columns o
 To clean up strings by removing whitespace, use `trim`, `trimStart`, and `trimEnd`.
 
 ```javascript
-const str = '   Hello, World!   ';
-console.log(str.trim());        // Output: 'Hello, World!'
-console.log(str.trimStart());   // Output: 'Hello, World!   '
-console.log(str.trimEnd());     // Output: '   Hello, World!'
+const str = "   Hello, World!   ";
+console.log(str.trim()); // Output: 'Hello, World!'
+console.log(str.trimStart()); // Output: 'Hello, World!   '
+console.log(str.trimEnd()); // Output: '   Hello, World!'
 ```
 
 These methods help ensure consistent formatting of user input or other text data.
@@ -54,11 +54,11 @@ These methods help ensure consistent formatting of user input or other text data
 The `split` and `join` methods allow you to work with substrings and arrays.
 
 ```javascript
-const sentence = 'JavaScript is awesome!';
-const words = sentence.split(' ');
+const sentence = "JavaScript is awesome!";
+const words = sentence.split(" ");
 console.log(words); // Output: ['JavaScript', 'is', 'awesome!']
 
-const joined = words.join('-');
+const joined = words.join("-");
 console.log(joined); // Output: 'JavaScript-is-awesome!'
 ```
 
@@ -69,11 +69,11 @@ These methods are useful for parsing and reassembling strings.
 The `replace` method allows you to replace the first occurrence of a substring, while `replaceAll` replaces all occurrences.
 
 ```javascript
-const text = 'I love JavaScript. JavaScript is great!';
-const newText = text.replace('JavaScript', 'TypeScript');
+const text = "I love JavaScript. JavaScript is great!";
+const newText = text.replace("JavaScript", "TypeScript");
 console.log(newText); // Output: 'I love TypeScript. JavaScript is great!'
 
-const newTextAll = text.replaceAll('JavaScript', 'TypeScript');
+const newTextAll = text.replaceAll("JavaScript", "TypeScript");
 console.log(newTextAll); // Output: 'I love TypeScript. TypeScript is great!'
 ```
 
@@ -84,10 +84,10 @@ Using these methods can simplify text manipulation tasks.
 To search for substrings, use `indexOf`, `lastIndexOf`, and `includes`.
 
 ```javascript
-const text = 'Find the needle in the haystack';
-console.log(text.indexOf('needle'));      // Output: 9
-console.log(text.lastIndexOf('the'));     // Output: 20
-console.log(text.includes('haystack'));   // Output: true
+const text = "Find the needle in the haystack";
+console.log(text.indexOf("needle")); // Output: 9
+console.log(text.lastIndexOf("the")); // Output: 20
+console.log(text.includes("haystack")); // Output: true
 ```
 
 These methods are essential for checking the presence and position of substrings.
@@ -97,7 +97,7 @@ These methods are essential for checking the presence and position of substrings
 Convert strings to uppercase or lowercase using `toUpperCase` and `toLowerCase`.
 
 ```javascript
-const str = 'JavaScript is Fun!';
+const str = "JavaScript is Fun!";
 console.log(str.toUpperCase()); // Output: 'JAVASCRIPT IS FUN!'
 console.log(str.toLowerCase()); // Output: 'javascript is fun!'
 ```
@@ -109,10 +109,10 @@ These methods are useful for normalizing text data.
 Extract parts of a string with `slice`, `substring`, and `substr`.
 
 ```javascript
-const text = 'Hello, World!';
-console.log(text.slice(0, 5));      // Output: 'Hello'
+const text = "Hello, World!";
+console.log(text.slice(0, 5)); // Output: 'Hello'
 console.log(text.substring(7, 12)); // Output: 'World'
-console.log(text.substr(7, 5));     // Output: 'World'
+console.log(text.substr(7, 5)); // Output: 'World'
 ```
 
 These methods offer flexibility in substring extraction.
@@ -122,7 +122,7 @@ These methods offer flexibility in substring extraction.
 For more complex string operations, regular expressions provide powerful tools.
 
 ```javascript
-const text = 'The price is $100.00';
+const text = "The price is $100.00";
 const regex = /\d+/g;
 const matches = text.match(regex);
 console.log(matches); // Output: ['100', '00']

@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-11-25T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Building an Angular App with Enum Alternatives - A Hands-On Guide
 postSlug: building-an-angular-app-with-enum-alternatives-a-hands-on-guide
 featured: false
@@ -46,7 +46,7 @@ Then, create the following files inside the `types` folder to define each enum a
 Define a union type to represent user statuses:
 
 ```typescript
-export type UserStatusType = 'Active' | 'Inactive' | 'Pending';
+export type UserStatusType = "Active" | "Inactive" | "Pending";
 ```
 
 #### 2. Constant Object (`types/status.constant.ts`)
@@ -55,12 +55,12 @@ Define a constant object with `as const` for user statuses:
 
 ```typescript
 export const STATUS = {
-  Active: 'Active',
-  Inactive: 'Inactive',
-  Pending: 'Pending'
+  Active: "Active",
+  Inactive: "Inactive",
+  Pending: "Pending",
 } as const;
 
-export type StatusValues = typeof STATUS[keyof typeof STATUS];
+export type StatusValues = (typeof STATUS)[keyof typeof STATUS];
 ```
 
 #### 3. Namespace with Constant Values (`types/role.namespace.ts`)
@@ -69,9 +69,9 @@ Define a namespace for user roles:
 
 ```typescript
 export namespace Role {
-  export const Admin = 'Admin';
-  export const User = 'User';
-  export const Guest = 'Guest';
+  export const Admin = "Admin";
+  export const User = "User";
+  export const Guest = "Guest";
 }
 
 export type RoleType = typeof Role.Admin | typeof Role.User | typeof Role.Guest;
@@ -83,9 +83,9 @@ Define a class with static properties for user roles:
 
 ```typescript
 export class UserRole {
-  static readonly Admin = 'Admin';
-  static readonly User = 'User';
-  static readonly Guest = 'Guest';
+  static readonly Admin = "Admin";
+  static readonly User = "User";
+  static readonly Guest = "Guest";
 }
 
 export type UserRoleType = string;
@@ -97,9 +97,9 @@ Define a mapped type for user statuses:
 
 ```typescript
 const StatusValues = {
-  Active: 'Active',
-  Inactive: 'Inactive',
-  Pending: 'Pending'
+  Active: "Active",
+  Inactive: "Inactive",
+  Pending: "Pending",
 } as const;
 
 export type MappedStatusType = keyof typeof StatusValues;
@@ -114,17 +114,17 @@ Next, let’s set up each component to demonstrate these alternatives.
 In `user-status.component.ts`, import the union type and constant object, and create a method to set the user's status:
 
 ```typescript
-import { Component } from '@angular/core';
-import { UserRoleType, UserRole } from '../types/role.class';
-import { RoleType, Role } from '../types/role.namespace';
-import { FormsModule } from '@angular/forms';
+import { Component } from "@angular/core";
+import { UserRoleType, UserRole } from "../types/role.class";
+import { RoleType, Role } from "../types/role.namespace";
+import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'app-user-role',
+  selector: "app-user-role",
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './user-role.component.html',
-  styleUrl: './user-role.component.scss',
+  templateUrl: "./user-role.component.html",
+  styleUrl: "./user-role.component.scss",
 })
 export class UserRoleComponent {
   role: RoleType = Role.User;
@@ -141,9 +141,9 @@ In `user-status.component.html`, use a dropdown to display and select statuses:
 ```html
 <h3>Set User Status</h3>
 <select [(ngModel)]="status">
-    @for (s of statusValues; track $index) {
-    <option [value]="s">{{ s }}</option>
-    }
+  @for (s of statusValues; track $index) {
+  <option [value]="s">{{ s }}</option>
+  }
 </select>
 <p>Current Status: {{ status }}</p>
 ```
@@ -153,17 +153,17 @@ In `user-status.component.html`, use a dropdown to display and select statuses:
 In `user-role.component.ts`, import the namespace and class-based role definitions:
 
 ```typescript
-import { Component } from '@angular/core';
-import { UserRoleType, UserRole } from '../types/role.class';
-import { RoleType, Role } from '../types/role.namespace';
-import { FormsModule } from '@angular/forms';
+import { Component } from "@angular/core";
+import { UserRoleType, UserRole } from "../types/role.class";
+import { RoleType, Role } from "../types/role.namespace";
+import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'app-user-role',
+  selector: "app-user-role",
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './user-role.component.html',
-  styleUrl: './user-role.component.scss',
+  templateUrl: "./user-role.component.html",
+  styleUrl: "./user-role.component.scss",
 })
 export class UserRoleComponent {
   role: RoleType = Role.User;
@@ -180,9 +180,9 @@ In `user-role.component.html`, use a dropdown to select roles:
 ```html
 <h3>Set User Role</h3>
 <select [(ngModel)]="role">
-    @for (r of userRoles; track $index) {
-    <option [value]="r">{{ r }}</option>
-    }
+  @for (r of userRoles; track $index) {
+  <option [value]="r">{{ r }}</option>
+  }
 </select>
 <p>Current Role: {{ role }}</p>
 ```
@@ -202,32 +202,35 @@ In `app.component.html`, add both `UserStatusComponent` and `UserRoleComponent` 
 Make sure to import the components in `app.component.ts`:
 
 ```typescript
-import { Component } from '@angular/core';
-import { UserRoleComponent } from './user-role/user-role.component';
-import { UserStatusComponent } from './user-status/user-status.component';
+import { Component } from "@angular/core";
+import { UserRoleComponent } from "./user-role/user-role.component";
+import { UserStatusComponent } from "./user-status/user-status.component";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
   imports: [UserRoleComponent, UserStatusComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
 export class AppComponent {
-  title = 'enum-alternatives-app';
+  title = "enum-alternatives-app";
 }
 ```
 
 In `app.config.ts`, provide the necessary configuration:
 
 ```typescript
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, provideZoneChangeDetection } from "@angular/core";
+import { provideRouter } from "@angular/router";
 
-import { routes } from './app.routes';
+import { routes } from "./app.routes";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+  ],
 };
 ```
 

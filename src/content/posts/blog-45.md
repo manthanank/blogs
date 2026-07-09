@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-12-09T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Building a Modern Music Player App with Angular and Tailwind CSS
 postSlug: building-a-modern-music-player-app-with-angular-and-tailwind-css
 featured: false
@@ -19,12 +19,12 @@ In the age of digital music, a sleek and functional music player is essential. T
 
 ---
 
-**Key Features of Harmonic Beats**  
+**Key Features of Harmonic Beats**
 
-- **Track Navigation:** Skip forward or backward between tracks.  
-- **Custom Progress Slider:** Built with CSS for precise playback control.  
-- **Playlist Management:** Display and select tracks from a scrollable list.  
-- **Error Handling:** Alerts for playback issues.  
+- **Track Navigation:** Skip forward or backward between tracks.
+- **Custom Progress Slider:** Built with CSS for precise playback control.
+- **Playlist Management:** Display and select tracks from a scrollable list.
+- **Error Handling:** Alerts for playback issues.
 
 ---
 
@@ -56,14 +56,12 @@ Configure `tailwind.config.js` to include Angular components:
 
 ```javascript
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-  ],
+  content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
 Add Tailwind directives in `src/styles.css`:
@@ -81,10 +79,12 @@ Add Tailwind directives in `src/styles.css`:
 Use Tailwind CSS to create a modern, responsive UI. Below is the HTML structure for the component:
 
 ```html
-<div class="w-full h-screen flex flex-col items-center justify-center p-6 bg-gray-800 text-white">
-  <h1 class="text-3xl font-bold mb-8">Music Player</h1>
+<div
+  class="flex h-screen w-full flex-col items-center justify-center bg-gray-800 p-6 text-white"
+>
+  <h1 class="mb-8 text-3xl font-bold">Music Player</h1>
   @if (error()) {
-  <div class="bg-red-500 p-4 mb-4 rounded w-full max-w-md">
+  <div class="mb-4 w-full max-w-md rounded bg-red-500 p-4">
     <div class="flex items-center">
       <span class="material-icons mr-2">error_outline</span>
       <div>
@@ -96,27 +96,32 @@ Use Tailwind CSS to create a modern, responsive UI. Below is the HTML structure 
   }
 
   <!-- Current Track -->
-  <div class="text-center mb-4 w-full max-w-md">
+  <div class="mb-4 w-full max-w-md text-center">
     <h2 class="text-2xl font-bold">{{ tracks[currentTrackIndex()].title }}</h2>
     <p class="text-gray-400">{{ tracks[currentTrackIndex()].artist }}</p>
   </div>
 
   <!-- Custom Slider -->
   <div class="relative mb-4 w-full max-w-md">
-    <input type="range" min="0" max="100" [value]="progress()" (input)="handleSeek($event)"
-      class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider-thumb" />
+    <input
+      type="range"
+      min="0"
+      max="100"
+      [value]="progress()"
+      (input)="handleSeek($event)"
+      class="slider-thumb h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-600"
+    />
   </div>
 
   <!-- Player Controls -->
-  <div class="flex justify-center space-x-4 mb-6 w-full max-w-md">
+  <div class="mb-6 flex w-full max-w-md justify-center space-x-4">
     <button (click)="handlePrevious()" class="btn">
       <i class="fas fa-step-backward"></i>
     </button>
     <button (click)="handlePlayPause()" class="btn">
       @if (isPlaying()) {
       <i class="fas fa-pause"></i>
-      }
-      @else {
+      } @else {
       <i class="fas fa-play"></i>
       }
     </button>
@@ -126,17 +131,21 @@ Use Tailwind CSS to create a modern, responsive UI. Below is the HTML structure 
   </div>
 
   <!-- Track List -->
-  <h3 class="text-xl font-semibold mb-2">Track List</h3>
-  <div class="h-[200px] w-full max-w-md rounded-md border border-gray-700 p-4 overflow-y-auto custom-scrollbar"
-    #trackListContainer>
+  <h3 class="mb-2 text-xl font-semibold">Track List</h3>
+  <div
+    class="custom-scrollbar h-[200px] w-full max-w-md overflow-y-auto rounded-md border border-gray-700 p-4"
+    #trackListContainer
+  >
     @for (track of tracks; track $index) {
-    <div class="p-2 cursor-pointer hover:bg-gray-700 rounded-md"
-      [ngClass]="{ 'bg-gray-700': $index === currentTrackIndex() }" (click)="handleTrackSelect($index)">
+    <div
+      class="cursor-pointer rounded-md p-2 hover:bg-gray-700"
+      [ngClass]="{ 'bg-gray-700': $index === currentTrackIndex() }"
+      (click)="handleTrackSelect($index)"
+    >
       <p class="font-medium">{{ track.title }}</p>
       <p class="text-sm text-gray-400">{{ track.artist }}</p>
     </div>
-    }
-    @empty {
+    } @empty {
     <p class="text-gray-400">No tracks found</p>
     }
   </div>
@@ -154,7 +163,7 @@ Define the logic in `music-player.component.ts`:
 - **Error Handling:** Provide user feedback for audio issues.
 
 ```typescript
-import { NgClass } from '@angular/common';
+import { NgClass } from "@angular/common";
 import {
   Component,
   OnInit,
@@ -162,7 +171,7 @@ import {
   computed,
   ViewChild,
   ElementRef,
-} from '@angular/core';
+} from "@angular/core";
 
 interface Track {
   title: string;
@@ -171,64 +180,64 @@ interface Track {
 }
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   imports: [NgClass],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
 export class AppComponent implements OnInit {
-  @ViewChild('trackListContainer') trackListContainer!: ElementRef;
+  @ViewChild("trackListContainer") trackListContainer!: ElementRef;
   tracks: Track[] = [
     {
-      title: 'Serenity',
-      artist: 'Piano and Strings',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+      title: "Serenity",
+      artist: "Piano and Strings",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
     },
     {
-      title: 'Energetic Beats',
-      artist: 'Drum and Bass Collective',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+      title: "Energetic Beats",
+      artist: "Drum and Bass Collective",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
     },
     {
-      title: 'Smooth Jazz',
-      artist: 'Sax and Keys',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+      title: "Smooth Jazz",
+      artist: "Sax and Keys",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
     },
     {
-      title: 'Classical Symphony',
-      artist: 'Orchestra Ensemble',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+      title: "Classical Symphony",
+      artist: "Orchestra Ensemble",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
     },
     {
-      title: 'Electronic Dreams',
-      artist: 'Synthwave Collective',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
+      title: "Electronic Dreams",
+      artist: "Synthwave Collective",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
     },
     {
-      title: 'Ambient Relaxation',
-      artist: 'Chillout Lounge',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
+      title: "Ambient Relaxation",
+      artist: "Chillout Lounge",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
     },
     {
-      title: 'Country Folk',
-      artist: 'Acoustic Guitar Trio',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
+      title: "Country Folk",
+      artist: "Acoustic Guitar Trio",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
     },
     {
-      title: 'Rocking Blues',
-      artist: 'Electric Guitar Band',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
+      title: "Rocking Blues",
+      artist: "Electric Guitar Band",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
     },
     {
-      title: 'Hip Hop Beats',
-      artist: 'Rap Collective',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3',
+      title: "Hip Hop Beats",
+      artist: "Rap Collective",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
     },
     {
-      title: 'Reggae Vibes',
-      artist: 'Island Rhythms',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
-    }
+      title: "Reggae Vibes",
+      artist: "Island Rhythms",
+      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+    },
   ];
 
   currentTrackIndex = signal(0);
@@ -245,11 +254,11 @@ export class AppComponent implements OnInit {
     this.audio?.pause();
     this.audio = new Audio(this.tracks[this.currentTrackIndex()].url);
 
-    this.audio.addEventListener('timeupdate', this.updateProgress.bind(this));
-    this.audio.addEventListener('ended', this.handleNext.bind(this));
-    this.audio.addEventListener('canplay', () => this.error.set(null));
-    this.audio.addEventListener('error', () => {
-      this.error.set('Unable to load audio. Please check the audio source.');
+    this.audio.addEventListener("timeupdate", this.updateProgress.bind(this));
+    this.audio.addEventListener("ended", this.handleNext.bind(this));
+    this.audio.addEventListener("canplay", () => this.error.set(null));
+    this.audio.addEventListener("error", () => {
+      this.error.set("Unable to load audio. Please check the audio source.");
       this.isPlaying.set(false);
     });
   }
@@ -260,7 +269,7 @@ export class AppComponent implements OnInit {
         this.audio.pause();
       } else {
         this.audio.play().catch(() => {
-          this.error.set('Playback failed. Please try again.');
+          this.error.set("Playback failed. Please try again.");
         });
       }
       this.isPlaying.set(!this.isPlaying());
@@ -271,7 +280,7 @@ export class AppComponent implements OnInit {
     const container = this.trackListContainer.nativeElement;
     const selectedTrack = container.children[this.currentTrackIndex()];
     if (selectedTrack) {
-      selectedTrack.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      selectedTrack.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   }
 
@@ -336,7 +345,7 @@ Visit `http://localhost:4200` to see **Harmonic Beats** in action!
 
 ---
 
-**Conclusion**  
+**Conclusion**
 
 In this tutorial, you learned how to build a modern music player app using Angular and Tailwind CSS. By combining Angular's component-based architecture with Tailwind's utility-first CSS framework, you created a visually appealing and interactive music player. Feel free to customize the app further by adding features like volume control, shuffle mode, or a dark mode theme.
 

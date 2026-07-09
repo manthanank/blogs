@@ -31,8 +31,8 @@ This approach is handy for extracting multiple values from an array in a single 
 The spread operator (`...`) allows you to easily copy arrays or merge them.
 
 ```javascript
-const fruits = ['apple', 'banana', 'cherry'];
-const moreFruits = ['date', 'elderberry', ...fruits];
+const fruits = ["apple", "banana", "cherry"];
+const moreFruits = ["date", "elderberry", ...fruits];
 
 console.log(moreFruits); // ['date', 'elderberry', 'apple', 'banana', 'cherry']
 ```
@@ -127,7 +127,7 @@ To check if a value is an array, use `Array.isArray`.
 
 ```javascript
 console.log(Array.isArray([1, 2, 3])); // true
-console.log(Array.isArray('not an array')); // false
+console.log(Array.isArray("not an array")); // false
 ```
 
 #### 8. **Combining Arrays**
@@ -169,7 +169,7 @@ Use `shift` and `unshift` to add or remove elements from the beginning of an arr
 For iterating over arrays, use `forEach`, which executes a provided function once for each array element.
 
 ```javascript
-const fruits = ['apple', 'banana', 'cherry'];
+const fruits = ["apple", "banana", "cherry"];
 fruits.forEach(fruit => console.log(fruit));
 ```
 

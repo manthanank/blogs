@@ -24,7 +24,7 @@ The `inject` function is a decorator that allows you to inject dependencies dire
 1. **Import the `inject` Function:**
 
    ```typescript
-   import { inject } from '@angular/core';
+   import { inject } from "@angular/core";
    ```
 
 2. **Replace Constructor Injection:**
@@ -33,8 +33,8 @@ The `inject` function is a decorator that allows you to inject dependencies dire
 
      ```typescript
      @Component({
-       selector: 'my-component',
-       templateUrl: './my-component.html'
+       selector: "my-component",
+       templateUrl: "./my-component.html",
      })
      export class MyComponent {
        constructor(private http: HttpClient) {} // Old constructor
@@ -45,8 +45,8 @@ The `inject` function is a decorator that allows you to inject dependencies dire
 
      ```typescript
      @Component({
-       selector: 'my-component',
-       templateUrl: './my-component.html'
+       selector: "my-component",
+       templateUrl: "./my-component.html",
      })
      export class MyComponent {
        http = inject(HttpClient);
@@ -88,18 +88,18 @@ While `inject()` brings many advantages, there are specific scenarios where it t
 ### Example
 
 ```typescript
-import { Component, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, inject } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
-  selector: 'my-component',
-  templateUrl: './my-component.html'
+  selector: "my-component",
+  templateUrl: "./my-component.html",
 })
 export class MyComponent {
   http = inject(HttpClient);
 
   getData() {
-    this.http.get('https://api.example.com/data').subscribe(data => {
+    this.http.get("https://api.example.com/data").subscribe(data => {
       // Handle the data
     });
   }

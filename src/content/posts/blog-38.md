@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-11-14T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Mastering Git Stash - A Guide to Temporarily Shelving Changes in Git
 postSlug: mastering-git-stash-a-guide-to-temporarily-shelving-changes-in-git
 featured: false

@@ -102,15 +102,15 @@ nodejs-supabase
 
 ### Users CRUD Operations
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/users` | Create a new user |
-| GET | `/api/users` | Get all users |
-| GET | `/api/users/search?query=name` | Search users by name |
-| GET | `/api/users/:id` | Get user by ID |
-| GET | `/api/users/email/:email` | Get user by email |
-| PUT | `/api/users/:id` | Update user by ID |
-| DELETE | `/api/users/:id` | Delete user by ID |
+| Method | Endpoint                       | Description          |
+| ------ | ------------------------------ | -------------------- |
+| POST   | `/api/users`                   | Create a new user    |
+| GET    | `/api/users`                   | Get all users        |
+| GET    | `/api/users/search?query=name` | Search users by name |
+| GET    | `/api/users/:id`               | Get user by ID       |
+| GET    | `/api/users/email/:email`      | Get user by email    |
+| PUT    | `/api/users/:id`               | Update user by ID    |
+| DELETE | `/api/users/:id`               | Delete user by ID    |
 
 ## Key Implementations
 
@@ -137,7 +137,7 @@ export default supabase;
 #### Create User
 
 ```javascript
-export const createUser = async (userData) => {
+export const createUser = async userData => {
   const { data, error } = await supabase
     .from("users")
     .insert([userData])
@@ -177,11 +177,8 @@ export const updateUser = async (id, updates) => {
 #### Delete User
 
 ```javascript
-export const deleteUser = async (id) => {
-  const { error } = await supabase
-    .from("users")
-    .delete()
-    .eq("id", id);
+export const deleteUser = async id => {
+  const { error } = await supabase.from("users").delete().eq("id", id);
 
   if (error) throw new Error(error.message);
   return { success: true, message: "User deleted successfully" };
@@ -192,7 +189,14 @@ export const deleteUser = async (id) => {
 
 ```javascript
 import express from "express";
-import { addUser, fetchUsers, fetchUserById, fetchUserByEmail, modifyUser, removeUser } from "../controllers/userController.js";
+import {
+  addUser,
+  fetchUsers,
+  fetchUserById,
+  fetchUserByEmail,
+  modifyUser,
+  removeUser,
+} from "../controllers/userController.js";
 
 const router = express.Router();
 

@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
 pubDatetime: 2024-10-23T08:44:00Z
-modDatetime: 
+modDatetime:
 title: Handling Global Errors in Angular - A Simple App with Custom ErrorHandler
 postSlug: handling-global-errors-in-angular-a-simple-app-with-custom-errorhandler
 featured: false
@@ -42,13 +42,13 @@ We need to extend Angular's `ErrorHandler` service to create our custom error ha
 Create a file called `global-error-handler.ts` in the `src/app` folder:
 
 ```typescript
-import { ErrorHandler, Injectable } from '@angular/core';
+import { ErrorHandler, Injectable } from "@angular/core";
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
   handleError(error: any): void {
-    console.error('Global Error:', error);
-    alert('An error occurred! Please check the console for details.');
+    console.error("Global Error:", error);
+    alert("An error occurred! Please check the console for details.");
   }
 }
 ```
@@ -60,13 +60,13 @@ In this simple example, we log the error to the console and show an alert notify
 Next, we need to inform Angular that we want to use our custom error handler. Open `src/app/app.module.ts` and update the `providers` array to register the `GlobalErrorHandler`:
 
 ```typescript
-import { ErrorHandler, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { GlobalErrorHandler } from './global-error-handler';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { FormsModule } from "@angular/forms";
+import { GlobalErrorHandler } from "./global-error-handler";
 
 @NgModule({
   declarations: [AppComponent],
@@ -84,15 +84,15 @@ Here, we are telling Angular to use our `GlobalErrorHandler` instead of the defa
 We will create a basic form that simulates an error if the user inputs invalid data. In `src/app/app.component.ts`, add the following code:
 
 ```typescript
-import { Component, signal } from '@angular/core';
+import { Component, signal } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.css",
 })
 export class AppComponent {
-  inputValue = signal<string>('');
+  inputValue = signal<string>("");
   result = signal<number | null>(null);
 
   onSubmit() {
@@ -100,7 +100,7 @@ export class AppComponent {
       // Simulate an error if input is not a valid number
       const numberValue = parseInt(this.inputValue());
       if (isNaN(numberValue)) {
-        throw new Error('Invalid number input');
+        throw new Error("Invalid number input");
       }
       this.result.set(numberValue * 10);
     } catch (error) {
@@ -114,7 +114,8 @@ export class AppComponent {
 <div class="container">
   <h1>Simple Error Handler Example</h1>
   <p>
-    Enter a number and see the result multiplied by 10. If the input is invalid, an error will be thrown.
+    Enter a number and see the result multiplied by 10. If the input is invalid,
+    an error will be thrown.
   </p>
   <form (ngSubmit)="onSubmit()">
     <label for="number">Enter a number:</label>
