@@ -131,7 +131,11 @@ const relatedPosts = posts
 
   <main
     id="main-content"
-    class:list={["app-layout", { "mt-8": !config.features.showBackButton }]}
+    class:list={[
+      "app-layout",
+      { "mt-8": !config.features.showBackButton },
+      { "lg:max-w-5xl": headings.length > 0 },
+    ]}
     data-pagefind-body
   >
     <h1
