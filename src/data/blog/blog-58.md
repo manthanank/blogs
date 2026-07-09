@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2025-03-06T08:44:00Z
-modDatetime: 2025-03-08T08:44:00Z
+pubDatetime: 2026-07-09T08:44:00Z
+modDatetime: 2026-07-09T08:44:00Z
 title: Enhancing Angular Applications with HTTP Interceptors for Authentication and Retry Logic
 postSlug: enhancing-angular-applications-with-http-interceptors-for-authentication-and-retry-logic
 featured: false

@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2025-03-18T08:44:00Z
-modDatetime: 
+pubDatetime: 2026-07-11T08:44:00Z
+modDatetime: 2026-07-11T08:44:00Z
 title: Building an AI-Powered Image Generator with Google's Gemini API
 postSlug: building-an-ai-powered-image-generator-with-googles-gemini-api
 featured: false

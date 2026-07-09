@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2025-03-20T08:44:00Z
-modDatetime: 
+pubDatetime: 2026-07-13T08:44:00Z
+modDatetime: 2026-07-13T08:44:00Z
 title: Building an AI-Powered Image Studio App with Angular and Node.js 
 postSlug: building-an-ai-powered-image-studio-app-with-angular-and-nodejs
 featured: false

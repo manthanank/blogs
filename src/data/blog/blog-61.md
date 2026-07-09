@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2025-03-19T08:44:00Z
-modDatetime: 
+pubDatetime: 2026-07-12T08:44:00Z
+modDatetime: 2026-07-12T08:44:00Z
 title: Building an AI-Powered Image Editor with Google's Gemini API
 postSlug: building-an-ai-powered-image-editor-with-googles-gemini-api
 featured: false

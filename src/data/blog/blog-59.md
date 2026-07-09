@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2025-03-17T08:44:00Z
-modDatetime: 
+pubDatetime: 2026-07-10T08:44:00Z
+modDatetime: 2026-07-10T08:44:00Z
 title: Building a Node.js CRUD API with Supabase
 postSlug: building-a-nodejs-crud-api-with-supabase
 featured: false

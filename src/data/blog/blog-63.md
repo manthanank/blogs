@@ -1,7 +1,7 @@
 ---
 author: Manthan Ankolekar
-pubDatetime: 2025-03-25T08:44:00Z
-modDatetime: 2025-03-25T08:44:00Z
+pubDatetime: 2026-07-14T08:44:00Z
+modDatetime: 2026-07-14T08:44:00Z
 title: Mastering Angular's New Control Flow with TypeScript Code Examples
 postSlug: mastering-angular-new-control-flow-with-typescript-code-examples
 featured: false
