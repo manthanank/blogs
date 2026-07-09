@@ -125,16 +125,16 @@ const relatedPosts = posts
   pubDatetime={pubDatetime}
   modDatetime={modDatetime}
 >
-  <Header />
+  <Header class:list={[{ "lg:max-w-6xl": headings.length > 0 }]} />
 
-  <BackButton />
+  <BackButton class:list={[{ "lg:max-w-6xl": headings.length > 0 }]} />
 
   <main
     id="main-content"
     class:list={[
       "app-layout",
       { "mt-8": !config.features.showBackButton },
-      { "lg:max-w-5xl": headings.length > 0 },
+      { "lg:max-w-6xl": headings.length > 0 },
     ]}
     data-pagefind-body
   >
@@ -173,7 +173,7 @@ const relatedPosts = posts
 
       {
         headings.length > 0 && (
-          <aside class="border-border hidden max-h-[calc(100vh-8rem)] w-60 shrink-0 self-start overflow-y-auto border-l pl-6 lg:sticky lg:top-24 lg:block">
+          <aside class="border-border no-scrollbar hidden max-h-[calc(100vh-8rem)] w-72 shrink-0 self-start overflow-y-auto border-l pl-6 lg:sticky lg:top-24 lg:block">
             <h2 class="text-muted-foreground mb-4 text-sm font-bold tracking-wider uppercase">
               Table of Contents
             </h2>
@@ -184,7 +184,13 @@ const relatedPosts = posts
                   <li class:list={{ "pl-4": h.depth === 3 }}>
                     <a
                       href={`#${h.slug}`}
-                      class="text-muted-foreground hover:text-accent toc-link block leading-tight transition-colors"
+                      class:list={[
+                        "text-muted-foreground hover:text-accent toc-link block leading-tight transition-colors",
+                        h.depth === 3
+                          ? "text-xs opacity-90"
+                          : "text-sm font-medium",
+                      ]}
+                      title={h.text}
                     >
                       {h.text}
                     </a>
@@ -244,7 +250,7 @@ const relatedPosts = posts
     }
     <Comments client:only="react" />
   </main>
-  <Footer />
+  <Footer class:list={[{ "lg:max-w-6xl": headings.length > 0 }]} />
 </PostLayout>
 
 <script is:inline data-astro-rerun>

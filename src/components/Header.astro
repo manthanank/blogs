@@ -17,6 +17,12 @@ const { site, features } = config;
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
 
+export interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
 // Strip the base prefix so isActive comparisons work regardless of deploy subdirectory.
 // e.g. with base "/blog": "/blog/posts/slug" → "/posts/slug"
 const relativePath = stripBase(Astro.url.pathname);
@@ -43,7 +49,10 @@ const isActive = (path: string) => {
 </a>
 
 <header
-  class="app-layout flex flex-col items-center justify-between sm:flex-row"
+  class:list={[
+    "app-layout flex flex-col items-center justify-between sm:flex-row",
+    className,
+  ]}
 >
   <div
     class="border-border bg-background relative flex w-full items-baseline justify-between border-b py-4 sm:items-center sm:py-6"

@@ -33,6 +33,14 @@
   @apply underline decoration-wavy decoration-2 underline-offset-8;
 }
 
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 :target {
   scroll-margin-block: 1rem;
 }
