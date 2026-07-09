@@ -1,0 +1,46 @@
+---
+// src/components/Newsletter.astro
+// Clean, modern newsletter subscription box component
+---
+
+<section
+  id="newsletter"
+  class="border-border bg-muted/30 mt-12 rounded-lg border p-6 sm:p-8"
+>
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="mb-2 text-xl font-bold tracking-tight sm:text-2xl">
+      Stay in the loop
+    </h2>
+    <p class="mx-auto mb-6 max-w-md text-sm opacity-80">
+      Subscribe to get my latest articles on software engineering, technology,
+      and design delivered straight to your inbox.
+    </p>
+
+    <form
+      action="https://buttondown.email/api/emails/embed-subscribe/manthan"
+      method="post"
+      target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/manthan', 'popupwindow')"
+      class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center"
+    >
+      <input type="hidden" value="1" name="embed" />
+      <div class="w-full max-w-sm flex-1">
+        <label for="bd-email" class="sr-only">Email address</label>
+        <input
+          type="email"
+          name="email"
+          id="bd-email"
+          required
+          placeholder="email@example.com"
+          class="border-border bg-background focus-visible:border-accent focus-visible:ring-accent w-full rounded border px-4 py-2 text-sm transition-all outline-none placeholder:opacity-60 focus-visible:ring-1"
+        />
+      </div>
+      <button
+        type="submit"
+        class="bg-accent text-accent-foreground rounded px-6 py-2.5 text-sm font-semibold whitespace-nowrap transition-all hover:opacity-90 active:scale-95"
+      >
+        Subscribe
+      </button>
+    </form>
+  </div>
+</section>
